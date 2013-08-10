@@ -1,6 +1,5 @@
-
 <?php
 
-echo "test test";
+echo "Test preprod";
 
 ?>
