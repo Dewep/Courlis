@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Les activités - Claé - Les Courlis</title>
+	<meta name="description" content="Claé - Les Courlis - Villers-Lès-Luxeuil">
+	<meta name="author" content="dewep, aurelien, maigret, ink, cookbook, recipes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!--<link rel="shortcut icon" href="../img/ink-favicon.ico">-->
+	<link rel="stylesheet" type="text/css" href="static/ink-2.2.0/css/ink.css">
+
+	<!--[if IE 7 ]>
+	<link rel="stylesheet" href="static/ink-2.2.0/css/ink-ie7.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<![endif]-->
+
+	<script type="text/javascript" src="static/ink-2.2.0/js/holder.js"></script>
+	<script type="text/javascript" src="static/ink-2.2.0/js/ink.min.js"></script>
+	<script type="text/javascript" src="static/ink-2.2.0/js/ink-ui.js"></script>
+	<script type="text/javascript" src="static/jquery/jquery-1.10.2.min.js"></script>
+	<!--<script type="text/javascript" src="static/ink-2.2.0/js/autoload.js"></script>-->
+	<script type="text/javascript" src="static/ink-2.2.0/js/html5shiv.js"></script>
+
+	<style type="text/css">
+		body {
+			background: #ededed;
+		}
+		header {
+			padding: 2em 0;
+			margin-bottom: 2em;
+		}
+		header h1 {
+			font-size: 2em;
+		}
+		header h1 small:before {
+			content: "|";
+			margin: 0 0.5em;
+			font-size: 1.6em;
+		}
+		footer {
+			background: #ccc;
+			color: #0003;
+		}
+		footer p {
+			padding: 0.5em 1em 0.5em 0;
+			margin: 0;
+		}
+		table thead th {
+			text-align: left;
+		}
+		table.content-center thead th {
+			text-align: center;
+		}
+		table.ink-table.alternating tbody tr:nth-child(odd) {
+			background-color: #fff;
+		}
+		table .ink-button {
+			padding: 2px 5px;
+			font-weight: normal;
+			font-size: 13px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="ink-navigation">
+	<ul class="menu horizontal orange">
+			<li><span class="left-space">Vous êtes connecté avec le compte de Herrmann Myriam. <a href="#" class="left-space">Déconnexion</a></span></li>
+		</ul>
+	</nav>
+	<div class="ink-grid">
+		<header>
+			<h1 class="pull-left medium-100 small-100">Claé Les Courlis<small>Villers-Lès-Luxeuil</small></h1>
+			<nav class="ink-navigation pull-right medium-100 small-100">
+				<ul class="menu horizontal black shadowed">
+					<li><a href="index.html">Accueil</a></li>
+					<li class="active"><a href="activites.html">Activités</a></li>
+					<li><a href="configurations.html">Configuration</a></li>
+					<li><a href="aide.html">Aide</a></li>
+					<li><a href="serveur.html">Serveur</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="column-group">
+			<div class="large-100 medium-100 small-100">
+				<div class="ink-alert basic"><p><b>Attention:</b> La sortie dans les bois du 15 juillet est annulée ; trop peu d'enfants étaient inscrits.</p></div>
+				<h3>Les prochaines activités</h3>
+				<table id="table-activites" class="ink-table alternating bordered content-center" data-page-size="6">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Activité</th>
+							<th>Enfants</th>
+							<th>Prix individuel</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-id="5">
+							<td>Mardi 6 juillet</td>
+							<td>Sortie Zoo<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>28 <i class="icon-euro"></i></td>
+						</tr>
+						<tr data-id="2">
+							<td>Vendredi 3 septembre</td>
+							<td>Repas<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>7 <i class="icon-euro"></i></td>
+						</tr>
+						<tr data-id="4">
+							<td>Vendredi 3 septembre</td>
+							<td>Promenade bois<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>Gratuit</td>
+						</tr>
+						<tr>
+							<td>Samedi 14 septembre</td>
+							<td>Danse<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>Gratuit</td>
+						</tr>
+						<tr>
+							<td>Lundi 20 octobre</td>
+							<td>Repas le midi<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br>Dupond Fiora <button class="ink-button red">X</button></td>
+							<td>7 <i class="icon-euro"></i></td>
+						</tr>
+						<tr>
+							<td>Mardi 6 juillet</td>
+							<td>Sortie Zoo<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>28 <i class="icon-euro"></i></td>
+						</tr>
+						<tr>
+							<td>Vendredi 3 septembre</td>
+							<td>Repas<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>7 <i class="icon-euro"></i></td>
+						</tr>
+						<tr>
+							<td>Vendredi 3 septembre</td>
+							<td>Promenade bois<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>Gratuit</td>
+						</tr>
+						<tr>
+							<td>Samedi 14 septembre</td>
+							<td>Danse<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br><button class="ink-button blue ajouter">Ajouter un enfant</button></td>
+							<td>Gratuit</td>
+						</tr>
+						<tr>
+							<td>Lundi 20 octobre</td>
+							<td>Repas le midi<br><button class="ink-button blue details">Voir les détails</button></td>
+							<td>Dupond Florent <button class="ink-button red">X</button><br>Dupond Fiora <button class="ink-button red">X</button></td>
+							<td>7 <i class="icon-euro"></i></td>
+						</tr>
+					</tbody>
+				</table>
+				<nav class="ink-navigation"><ul class="pagination rounded shadowed grey content-center"></ul></nav>
+				<div class="ink-shade fade">
+					<div id="activite" class="ink-modal" data-trigger="undefined">
+						<div class="modal-header">
+							<button class="modal-close ink-dismiss"></button>
+							<h5>Sortie Zoo</h5>
+						</div>
+						<div class="modal-body" id="modalContent">
+							<h3>Titre</h3>
+							<p>Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation.</p>
+							<p class="content-center">
+								<img src="http://placehold.it/900x400" alt="">
+							</p>
+							<p>Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation.</p>
+							<p>Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation Présentation.</p>
+						</div>
+						<div class="modal-footer">
+							<div class="push-right">
+								<button class="ink-button blue">Inscrire vos enfants</button>
+								<button class="ink-button red ink-dismiss">Fermer</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ink-shade fade">
+					<div id="inscription" class="ink-modal" data-trigger="undefined" data-width="600px" data-height="350px">
+						<div class="modal-header">
+							<button class="modal-close ink-dismiss"></button>
+							<h5>Sortie Zoo</h5>
+						</div>
+						<div class="modal-body" id="modalContent">
+							<h3>Gérer les inscriptions de vos enfants</h3>
+							<p><input type="checkbox">Dupond Florent<br><input type="checkbox">Dupond Fiora</p>
+							<p>Retaper votre mot de passe : <input></p>
+						</div>
+						<div class="modal-footer">
+							<div class="push-right">
+								<button class="ink-button green">Enregistrer</button>
+								<button class="ink-button red ink-dismiss">Annuler</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript">
+					// There are two ways to run the code...
+					// 1 - If you know you have the component and its dependencies already loaded, just do:
+					var table = new Ink.UI.Table('#table-activites', {previousPageLabel: 'Précédent', nextLabel: 'Suivant'});
+					modal = new Ink.UI.Modal('#activite');
+					modal2 = new Ink.UI.Modal('#inscription');
+					//modal._init(false);
+					//modal.dismiss();
+
+					// 2 - If you're not sure the component or its dependencies are loaded at runtime, do:
+					/*Ink.requireModules( ['Ink.UI.Table_1'], function(Table){
+						new Table('.ink-table');
+					});*/
+					$('#table-activites tbody tr button.details').click(function(){
+						modal._init(false);
+						//alert("ID: " + $(this).parents('tr').eq(0).attr('data-id'));
+					});
+					$('#table-activites tbody tr button.ajouter').click(function(){
+						modal2._init(false);
+						//alert("ID: " + $(this).parents('tr').eq(0).attr('data-id'));
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="ink-grid">
+			<nav class="ink-navigation push-left medium-100 small-100 small-push-left">
+				<ul class="menu horizontal">
+					<li class=""active><a href="index.html">Accueil</a></li>
+					<li><a href="activites.html">Activités</a></li>
+					<li><a href="configurations.html">Configuration</a></li>
+					<li><a href="aide.html">Aide</a></li>
+					<li><a href="serveur.html">Serveur</a></li>
+				</ul>
+			</nav>
+			<p class="push-right small-100">villers-les-luxeuil.com - dewep.net</p>
+		</div>
+	</footer>
+</body>
+</html>
