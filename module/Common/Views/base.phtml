@@ -2,38 +2,91 @@
 <html lang="fr">
 <head>
 
-	<meta charset="UTF-8">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+	<meta charset="utf-8">
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="robots" content="all">
 
-	<!--<link rel="stylesheet" href="/projets/dewep/themes/css/global.css?1374821607" media="screen, projection" type="text/css">
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-	<link rel="canonical" href="http://www.dewep.net/">
-	<link rel="author" href="https://plus.google.com/100373771398479088953">--><!--publisher-->
-	<!--<link rel="alternate" type="application/rss+xml" href="http://www.dewep.net/Blog/rss.xml" title="Flux RSS du blog de Dewep.net">-->
-
-	<meta name="author" content="Maigret Aurélien">
+	<title>Les Courlis - Villers-Lès-Luxeuil</title>
 	<meta name="keywords" content="dewep">
-	<meta name="description" content="Description">
-	<title>Claé Les Courlis</title>
+	<meta name="description" content="Claé - Les Courlis - Villers-Lès-Luxeuil">
+	<meta name="author" content="dewep, aurelien, maigret, ink, cookbook, recipes">
 
-	<!--<script type='text/javascript' src="/projets/common/themes/js/jquery-1.7.2.min.js"></script>-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--<link rel="shortcut icon" href="../img/ink-favicon.ico">-->
 
-	<!--[if ie]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
-	<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link rel="stylesheet" type="text/css" href="static/ink-2.2.0/css/ink.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<!--[if IE 7 ]>
+	<link rel="stylesheet" href="static/ink-2.2.0/css/ink-ie7.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<![endif]-->
 
+	<script type="text/javascript" src="static/ink-2.2.0/js/holder.js"></script>
+	<script type="text/javascript" src="static/ink-2.2.0/js/ink.min.js"></script>
+	<script type="text/javascript" src="static/ink-2.2.0/js/ink-ui.min.js"></script>
+	<script type="text/javascript" src="static/jquery/jquery-1.10.2.min.js"></script>
+	<!--<script type="text/javascript" src="static/ink-2.2.0/js/autoload.js"></script>-->
+	<script type="text/javascript" src="static/ink-2.2.0/js/html5shiv.js"></script>
+
+	<style type="text/css">
+		body {
+			background: #ededed;
+		}
+		header {
+			/*padding: 2em 0 1em;
+			margin-bottom: 0.5em;*/
+			padding: 2em 0 0;
+			margin-bottom: 2em;
+		}
+		header h1 {
+			font-size: 2em;
+		}
+		header h1 small:before {
+			content: "|";
+			margin: 0 0.5em;
+			font-size: 1.6em;
+		}
+		footer {
+			color: #333;
+			border-top: 1px solid #ccc;
+			background: #DFDFDF;
+		}
+		footer p {
+			padding: 0.5em 1em 0.5em 0;
+			margin: 0;
+		}
+		table thead th {
+			text-align: left;
+		}
+		table.ink-table.alternating tbody tr:nth-child(odd) {
+			background-color: #fff;
+		}
+		header nav + nav {
+			margin: 0 10px 0 0;
+		}
+		nav li.label {
+			padding: 0.5em 1em;
+			display: inline-block;
+			color: #AAA;
+		}
+		header nav li.separator-left {
+			padding-left: 1em;
+			margin-left: 1em;
+			border-left: 1px solid #EEE;
+		}
+		header nav li.separator-left.label {
+			padding-left: 2em;
+		}
+	</style>
 </head>
+
 <body>
 
-	<?php $this->render('header'); ?>
-
-	<?php $this->renderAction(); ?>
+	<div class="ink-grid">
+		<?php $this->render('header'); ?>
+		<?php $this->renderAction(); ?>
+	</div>
 
 	<?php $this->render('footer'); ?>
 
