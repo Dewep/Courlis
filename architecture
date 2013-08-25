@@ -1,0 +1,136 @@
+Liste des class/Méthodes métiers
+
+
+- Courlis_Repas
+get
+edit
+add
+delete
+
+- Courlis_Activites
+get
+getList
+edit
+add
+delete
+unregister
+register
+getRegistered (d'un parent en facultatif)
+getNextRegisters
+
+- Courlis_Blog
+get
+getList
+edit
+add
+delete
+
+- Courlis_User
+edit
+add
+delete
+setChilds
+confirm
+
+
+
+- User extends Dewep_User extends Courlis_User
+connect
+logas
+get (facultatif avec pseudo, facultatif avec rights)
+getReal
+isLogas
+hasRigth
+setRigths
+
+- Dewep_Cron
+create
+edit
+remove
+get
+
+- Dewep_Files
+get
+getList
+add
+delete
+
+
+
+
+
+Structures User::get
+- id
+- name
+- firstname
+- identifiant
+- mail
+- rights
+- childs
+- is_admin
+- is_parent
+- is_connect
+
+
+
+Listes des droits :
+- (manage_blog) Gérer les articles du Blog
+- (manage_files) Pouvoir gérer les fichiers
+- (manage_quick_info) Gérer les infos rapides
+- (manage_admin) Gérer les admins
+- (manage_parent) Gérer les parents
+- (manage_activity) Gérer les activités
+- (promote_activitiy) Promouvoir les activités
+- (confirm_user) Confirmer les nouveaux comptes
+- (logas) Logas sur les parents
+- (send_mail) Envoyer des mails
+- (edit_footer_mail) Modifier le footer des mails
+- (manage_cron) Gérer les tâches cron
+
+
+
+Table Cron :
+- id
+- id_parent (En cas de relance de tâche)
+- type
+- subtype
+- id_reference
+- time_create
+- id_creator
+- time_to_exec
+- time_exec
+- params
+- etat (wait, in_process, suspend, canceled, failed, successed)
+- result
+
+
+
+Table activité :
+- id
+- name
+- start
+- end
+- nb_max_registrations
+- description
+- details
+- age_min
+- age_max
+- type_callback (repas, normal, sans)
+- id_creator
+- time_create
+- id_modifier
+- mtime
+- disable
+
+
+
+Table articles :
+- id
+- name
+- description
+- content
+- id_creator
+- time_create
+- id_modifier
+- mtime
+- disable
