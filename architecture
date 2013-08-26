@@ -1,12 +1,6 @@
 Liste des class/Méthodes métiers
 
 
-- Courlis_Repas
-get
-edit
-add
-delete
-
 - Courlis_Activites
 get
 getList
