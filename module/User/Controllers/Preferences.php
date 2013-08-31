@@ -1,7 +1,10 @@
 <?php
 
+/*
+> index : Gérer son compte
+*/
 
-class Module_Default_Default extends Module_Default
+class Module_User_Preferences extends Module_User
 {
 	public function init_controller()
 	{
@@ -17,8 +20,8 @@ class Module_Default_Default extends Module_Default
 
 	public function indexAction()
 	{
-		$this->view->title = 'Les Courlis';
-		$this->view->subtitle = 'Villers-Lès-Luxeuil';
+		$this->view->title = 'Gérer son compte';
+		$this->view->subtitle = 'Les Courlis';
 	}
 }
 

@@ -1,21 +1,29 @@
 <header>
+		<div class="column-group">
+			<h1 class="pull-left medium-100 small-100">
+				Les Courlis
+				<small><?php echo $this->title; ?></small>
+			</h1>
+		</div>
+		<br>
 	<div class="column-group">
 		<nav class="ink-navigation hide-small">
-			<ul class="menu horizontal black rounded shadowed">
+			<ul class="menu horizontal white shadowed">
 				<li class="activee" style="margin-left: 1em;"><a href="<?php echo $this->baseUrl('/'); ?>"><i class="icon-home"></i></a></li>
 				<li class="label separator-left">École <i class="icon-double-angle-right"></i></li>
-				<li><a href="<?php echo $this->baseUrl('/Blog'); ?>">Blog</a></li>
+				<li><a href="<?php echo $this->baseUrl('/Ecole/Blog'); ?>">Blog</a></li>
 				<li class="label separator-left">Claé <i class="icon-double-angle-right"></i></li>
-				<li><a href="<?php echo $this->baseUrl('/Activites'); ?>">Activités</a></li>
-				<li><a href="<?php echo $this->baseUrl('/Configuration'); ?>">Configuration</a></li>
-				<li><a href="<?php echo $this->baseUrl('/Inscription'); ?>">Inscription</a></li>
-				<li class="separator-left"><a href="<?php echo $this->baseUrl('/Connexion'); ?>">Connexion</a></li>
-				<li class="separator-left"><a href="<?php echo $this->baseUrl('/Deconnexion'); ?>">Déconnexion</a></li>
+				<li><a href="<?php echo $this->baseUrl('/Clae/Activites'); ?>">Activités</a></li>
+				<?php if (User::getId()): ?>
+					<li class="label separator-left"><?php echo User::getString(); ?> <i class="icon-double-angle-right"></i></li>
+					<li><a href="<?php echo $this->baseUrl('/User/Preferences'); ?>">Préférences</a></li>
+					<li><a href="<?php echo $this->baseUrl('/User/Session/Deconnexion'); ?>">Déconnexion</a></li>
+				<?php else: ?>
+					<li class="label separator-left">Votre compte <i class="icon-double-angle-right"></i></li>
+					<li><a href="<?php echo $this->baseUrl('/User/Session/Inscription'); ?>">Inscription</a></li>
+					<li><a href="<?php echo $this->baseUrl('/User/Session/Connexion'); ?>">Connexion</a></li>
+				<?php endif; ?>
 			</ul>
 		</nav>
-	</div>
-	<br>
-	<div class="column-group">
-		<h1 class="pull-left medium-100 small-100">Les Courlis <small>Villers-Lès-Luxeuil</small></h1>
 	</div>
 </header>

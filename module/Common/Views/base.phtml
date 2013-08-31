@@ -6,7 +6,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="robots" content="all">
 
-	<title>Les Courlis - Villers-Lès-Luxeuil</title>
+	<title><?php echo $this->title . ' - ' . $this->subtitle; ?></title>
 	<meta name="keywords" content="dewep">
 	<meta name="description" content="Claé - Les Courlis - Villers-Lès-Luxeuil">
 	<meta name="author" content="dewep, aurelien, maigret, ink, cookbook, recipes">
@@ -32,17 +32,24 @@
 	<style type="text/css">
 		body {
 			background: #ededed;
+			background: #F0F0F0;
+			font-size: 14px;
 		}
 		header {
 			/*padding: 2em 0 1em;
 			margin-bottom: 0.5em;*/
-			padding: 2em 0 0;
-			margin-bottom: 2em;
 		}
-		header h1 {
+		#header {
+			border-bottom: 1px solid #CCC;
+			background: #DFDFDF;
+			padding: 2em 0 1em;
+			margin-bottom: 1em;
+			font-size: 1.1em;
+		}
+		h1 {
 			font-size: 2em;
 		}
-		header h1 small:before {
+		h1 small:before {
 			content: "|";
 			margin: 0 0.5em;
 			font-size: 1.6em;
@@ -78,14 +85,39 @@
 		header nav li.separator-left.label {
 			padding-left: 2em;
 		}
+		.ink-alert.basic, .ink-alert.block h4 {
+			padding: 0.5em 1em;
+		}
 	</style>
 </head>
 
 <body>
 
+	<div id="header">
+		<div class="ink-grid">
+			<?php $this->render('header'); ?>
+		</div>
+	</div>
+
 	<div class="ink-grid">
-		<?php $this->render('header'); ?>
-		<?php $this->renderAction(); ?>
+
+		<?php if (isset($this->alert)): ?>
+
+			<div class="ink-alert block <?php echo $this->alert->type; ?>">
+				<!--<button class="ink-dismiss">&times;</button>-->
+				<h4><?php echo $this->alert->title; ?></h4>
+				<p><?php echo $this->alert->content; ?></p>
+			</div>
+
+		<?php endif; ?>
+
+		<?php if (!isset($this->alert) || !$this->alert->force): ?>
+
+			<!--<div class="ink-alert basic"><p><b>Attention:</b> La sortie dans les bois du 15 juillet est annulée ; trop peu d'enfants étaient inscrits.</p></div>-->
+			<?php $this->renderAction(); ?>
+
+		<?php endif; ?>
+
 	</div>
 
 	<?php $this->render('footer'); ?>

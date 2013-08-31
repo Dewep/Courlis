@@ -1,3 +1,38 @@
+
+-- Default
+	- Default
+		> index : Accueil du site
+	- Mentions_Legales
+		> index : Mentions légales
+	- Aide
+		> index : Lien vers les différentes pages d'aide
+		> inscription : Aide inscription/connexion/...
+		> preferences : Aide sur les préférences
+		> activites : Aide sur les activités
+
+-- User
+	- Session
+		> connexion : Se connecter
+		> deconnexion : Se déconnecter
+		> inscription : S'inscrire
+		> reset_mdp : Mot de passe oublié
+	- Preferences
+		> index : Gérer son compte
+
+-- Ecole
+	- Blog
+		> index : Liste des articles
+		> article : Vue d'un article
+
+-- Clae
+	- Activite
+		> index : liste des prochaines activités
+
+
+
+
+
+
 Liste des class/Méthodes métiers
 
 

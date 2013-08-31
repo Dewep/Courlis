@@ -1,0 +1,40 @@
+
+
+OK -> Page de connexion
+OK -> Token
+OK -> Page de déconnexion
+OK -> User::getName() : Nom+Prénom ou login
+
+
+-> Page de préférences
+-> Gérer ses enfants
+
+
+-> Liste des activités
+-> Voir détails d'une activité (avec requête AJAX)
+-> Waiter
+
+
+-> Ajouter/Modifier/Supprimer activité
+
+
+-> Pouvoir inscrire un enfant à une activité
+
+
+-> Page d'accueil
+
+
+-> Voir les inscrits (html)
+-> Exporter les inscrits (csv)
+-> Exporter les inscrits (pdf)
+
+
+
+--------------------------------
+
+
+-> Inscription
+-> Reset Mot de passe
+-> Remplissage auto des input/textarea/... si déjà fourni, en cas d'erreur par exemple (en passant $_REQUEST)
+-> Système de cache
+

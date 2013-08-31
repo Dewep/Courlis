@@ -1,7 +1,7 @@
 <?php
 
 
-class Module_Default_Default extends Module_Default
+class Module_Default_Aide extends Module_Default
 {
 	public function init_controller()
 	{
@@ -17,8 +17,8 @@ class Module_Default_Default extends Module_Default
 
 	public function indexAction()
 	{
-		$this->view->title = 'Les Courlis';
-		$this->view->subtitle = 'Villers-Lès-Luxeuil';
+		$this->view->title = 'Pages d\'aide';
+		$this->view->subtitle = 'Les Courlis';
 	}
 }
 
