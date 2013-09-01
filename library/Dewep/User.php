@@ -81,23 +81,25 @@ class Dewep_User
 	{
 		// @WARNING : Mot de passe en dur autorisé seulement pour les tests !
 		$type = filter_var($identifiant, FILTER_VALIDATE_EMAIL) ? 'mail' : 'login';
-		$result = MySQL::query("SELECT `user`.`id`, `user`.`login`
+		$result = MySQL::query("SELECT `user`.`id`, `user`.`login`, `user`.`disabled`, `user`.`confirm`
 			FROM `user`
 			WHERE
 				`user`.`$type` = '".MySQL::escape($identifiant)."'
 				AND (`user`.`password` = '".MySQL::escape(sha1(Shape::getConf('security', 'salt') . $password))."' OR `user`.`password` = '".MySQL::escape($password)."')
-				AND `user`.disabled = 0
-				AND `user`.`confirm` = 1
 			LIMIT 1;");
 		$result = $result->fetch();
 		if (!$result || !$result->id || !$result->login)
+			throw new Exception("Échec lors de l'identification.");
+		if (!$result->confirm)
+			throw new Exception("Ce compte n'a pas encore été confirmé par un administrateur.");
+		if ($result->disabled)
 			throw new Exception("Échec lors de l'identification.");
 		self::$id = $result->id;
 		$_SESSION['User'] = array('Id' => $result->id);
 		return $result->id;
 	}
 
-	public static function get($id = "")
+	public static function get($id = 0)
 	{
 		$id = ($id) ? $id : User::getId();
 

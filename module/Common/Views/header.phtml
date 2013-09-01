@@ -16,7 +16,11 @@
 				<li><a href="<?php echo $this->baseUrl('/Clae/Activites'); ?>">Activités</a></li>
 				<?php if (User::getId()): ?>
 					<li class="label separator-left"><?php echo User::getString(); ?> <i class="icon-double-angle-right"></i></li>
-					<li><a href="<?php echo $this->baseUrl('/User/Preferences'); ?>">Préférences</a></li>
+					<?php if (User::get()->type == 'parent'): ?>
+						<li><a href="<?php echo $this->baseUrl('/User/Preferences'); ?>">Préférences</a></li>
+					<?php else: ?>
+						<li><a href="<?php echo $this->baseUrl('/User/Administration'); ?>">Administration</a></li>
+					<?php endif; ?>
 					<li><a href="<?php echo $this->baseUrl('/User/Session/Deconnexion'); ?>">Déconnexion</a></li>
 				<?php else: ?>
 					<li class="label separator-left">Votre compte <i class="icon-double-angle-right"></i></li>

@@ -37,4 +37,6 @@ OK -> User::getName() : Nom+Prénom ou login
 -> Reset Mot de passe
 -> Remplissage auto des input/textarea/... si déjà fourni, en cas d'erreur par exemple (en passant $_REQUEST)
 -> Système de cache
-
+-> Mot de passe en dur dans la BDD
+-> Quand même accédé à son compte avec un compte non confirmé
+-> Vérifier permission de chaque action (connecté, droits, compte non confirmé, ...)

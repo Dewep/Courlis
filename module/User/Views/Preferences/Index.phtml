@@ -1,1 +1,89 @@
-Préférences
+<div class="ink-alert basic">
+	<p><b>Attention:</b> En modifiant votre nom ou prénom, ou des informations concernant vos enfants, votre compte devra être revalidé par un administrateur.</p>
+</div>
+<div class="column-group gutters">
+	<div class="large-50 medium-50 small-100">
+		<h3>Mon compte</h3>
+		<?php if (isset($this->erreur_compte)): ?>
+			<div class="ink-alert basic error"><p><?php echo $this->erreur_compte; ?></p></div>
+		<?php endif; ?>
+		<form class="ink-form" method="post">
+			<fieldset>
+				<div class="control-group column-group gutters">
+					<label class="large-30 content-right" for="compte_name" title="Votre compte devra être validé si vous modifiez ce champs">Votre nom :</label> 
+					<div class="control large-70">
+						<input type="text" id="compte_name" name="compte_name" placeholder="Nom" title="Votre compte devra être validé si vous modifiez ce champs">
+					</div>
+					<label class="large-30 content-right" for="compte_firstname" title="Votre compte devra être validé si vous modifiez ce champs">Votre prénom :</label> 
+					<div class="control large-70">
+						<input type="text" id="compte_firstname" name="compte_firstname" placeholder="Prénom" title="Votre compte devra être validé si vous modifiez ce champs">
+					</div>
+					<label class="large-30 content-right" for="compte_mail">Votre E-Mail :</label> 
+					<div class="control large-70">
+						<input type="text" id="compte_mail" name="compte_mail" placeholder="E-Mail">
+					</div>
+					<label class="large-30 content-right" for="compte_pass">Nouveau mot de passe :</label> 
+					<div class="control large-70">
+						<input type="password" id="compte_pass" name="compte_pass" placeholder="Ne compléter ce champs qu'en cas de modification">
+					</div>
+					<div class="content-right">
+						<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
+						<input type="submit" class="ink-button green" value="Enregistrer">
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="large-50 medium-50 small-100">
+		<h3>Liste de vos enfants</h3>
+		<table class="ink-table alternating bordered content-center half-top-space">
+			<thead>
+				<tr>
+					<th>Nom Prénom</th>
+					<th>Date de naissance</th>
+					<th>Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Nom Prénom</td>
+					<td>16/02/1994</td>
+					<td>
+						<form method="post">
+							<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
+							<input type="hidden" name="child" value="id">
+							<input type="submit" name="delete_child" class="ink-button button-small red" value="Supprimer">
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<h3>Ajouter un enfant</h3>
+		<?php if (isset($this->erreur_ajout_enfant)): ?>
+			<div class="ink-alert basic error"><p><?php echo $this->erreur_ajout_enfant; ?></p></div>
+		<?php endif; ?>
+		<form class="ink-form" method="post">
+			<fieldset>
+				<div class="control-group column-group gutters">
+					<label class="large-30 content-right" for="compte_name">Nom :</label>
+					<div class="control large-70">
+						<input type="text" id="compte_name" name="compte_name" placeholder="Nom de l'enfant">
+					</div>
+					<label class="large-30 content-right" for="compte_firstname">Votre prénom :</label>
+					<div class="control large-70">
+						<input type="text" id="compte_firstname" name="compte_firstname" placeholder="Prénom de l'enfant">
+					</div>
+					<label class="large-30 content-right" for="compte_mail">Date de naissance :</label>
+					<div class="control large-70">
+						<input type="text" id="compte_mail" name="compte_mail" placeholder="Format : JOUR/MOIS/ANNEE (16/02/1994)" title="Format : JOUR/MOIS/ANNEE (16/02/1994)">
+					</div>
+					<div class="content-right">
+						<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
+						<input type="submit" class="ink-button green" value="Ajouter">
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
