@@ -1,4 +1,9 @@
 <div class="ink-alert basic">
+	<p>En cours de création.</p>
+</div>
+Préférences
+<!--
+<div class="ink-alert basic">
 	<p><b>Attention:</b> En modifiant votre nom ou prénom, ou des informations concernant vos enfants, votre compte devra être revalidé par un administrateur.</p>
 </div>
 <div class="column-group gutters">
@@ -12,15 +17,15 @@
 				<div class="control-group column-group gutters">
 					<label class="large-30 content-right" for="compte_name" title="Votre compte devra être validé si vous modifiez ce champs">Votre nom :</label> 
 					<div class="control large-70">
-						<input type="text" id="compte_name" name="compte_name" placeholder="Nom" title="Votre compte devra être validé si vous modifiez ce champs">
+						<input type="text" id="compte_name" name="compte_name" placeholder="Nom" title="Votre compte devra être validé si vous modifiez ce champs" value="<?php echo $this->posts['compte_name']; ?>">
 					</div>
 					<label class="large-30 content-right" for="compte_firstname" title="Votre compte devra être validé si vous modifiez ce champs">Votre prénom :</label> 
 					<div class="control large-70">
-						<input type="text" id="compte_firstname" name="compte_firstname" placeholder="Prénom" title="Votre compte devra être validé si vous modifiez ce champs">
+						<input type="text" id="compte_firstname" name="compte_firstname" placeholder="Prénom" title="Votre compte devra être validé si vous modifiez ce champs" value="<?php echo $this->posts['compte_firstname']; ?>">
 					</div>
 					<label class="large-30 content-right" for="compte_mail">Votre E-Mail :</label> 
 					<div class="control large-70">
-						<input type="text" id="compte_mail" name="compte_mail" placeholder="E-Mail">
+						<input type="text" id="compte_mail" name="compte_mail" placeholder="E-Mail" value="<?php echo $this->posts['compte_mail']; ?>">
 					</div>
 					<label class="large-30 content-right" for="compte_pass">Nouveau mot de passe :</label> 
 					<div class="control large-70">
@@ -66,17 +71,17 @@
 		<form class="ink-form" method="post">
 			<fieldset>
 				<div class="control-group column-group gutters">
-					<label class="large-30 content-right" for="compte_name">Nom :</label>
+					<label class="large-30 content-right" for="child_name">Nom :</label>
 					<div class="control large-70">
-						<input type="text" id="compte_name" name="compte_name" placeholder="Nom de l'enfant">
+						<input type="text" id="child_name" name="child_name" placeholder="Nom de l'enfant" value="<?php echo $this->posts['child_name']; ?>">
 					</div>
-					<label class="large-30 content-right" for="compte_firstname">Votre prénom :</label>
+					<label class="large-30 content-right" for="child_firstname">Votre prénom :</label>
 					<div class="control large-70">
-						<input type="text" id="compte_firstname" name="compte_firstname" placeholder="Prénom de l'enfant">
+						<input type="text" id="child_firstname" name="child_firstname" placeholder="Prénom de l'enfant" value="<?php echo $this->posts['child_firstname']; ?>">
 					</div>
-					<label class="large-30 content-right" for="compte_mail">Date de naissance :</label>
+					<label class="large-30 content-right" for="child_birthday">Date de naissance :</label>
 					<div class="control large-70">
-						<input type="text" id="compte_mail" name="compte_mail" placeholder="Format : JOUR/MOIS/ANNEE (16/02/1994)" title="Format : JOUR/MOIS/ANNEE (16/02/1994)">
+						<input type="text" id="child_birthday" name="child_birthday" placeholder="Format : JOUR/MOIS/ANNEE (16/02/1994)" title="Format : JOUR/MOIS/ANNEE (16/02/1994)" value="<?php echo $this->posts['child_birthday']; ?>">
 					</div>
 					<div class="content-right">
 						<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
@@ -87,3 +92,4 @@
 		</form>
 	</div>
 </div>
+-->

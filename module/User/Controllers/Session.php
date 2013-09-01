@@ -32,6 +32,8 @@ class Module_User_Session extends Module_User
 		{
 			try {
 				User::connect($_POST['login_name'], $_POST['login_pass']);
+				if (!User::get()->confirm)
+					return $this->alert('Connexion effectuée', 'Identifiants corrects. Vous êtes maintenant connecté. Cependant, votre compte doit être validé par un administrateur avant de pouvoir faire des actions avec.', 'warning');
 				return $this->alert('Connexion effectuée', 'Identifiants corrects. Vous êtes maintenant connecté.', 'success');
 			} catch (Exception $e) {
 				$this->view->erreur_connexion = $e->getMessage();

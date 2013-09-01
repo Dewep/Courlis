@@ -38,5 +38,15 @@ OK -> User::getName() : Nom+Prénom ou login
 -> Remplissage auto des input/textarea/... si déjà fourni, en cas d'erreur par exemple (en passant $_REQUEST)
 -> Système de cache
 -> Mot de passe en dur dans la BDD
--> Quand même accédé à son compte avec un compte non confirmé
+OK -> Quand même accédé à son compte avec un compte non confirmé
 -> Vérifier permission de chaque action (connecté, droits, compte non confirmé, ...)
+
+
+
+Mails à envoyer :
+- 24h avant participation à une activité
+- Vendredi soir pour rappeler la liste des jours avec repas de la semaine suivante
+- Compte créé, mais doit être confirmé par un administrateur
+- Compte modifié, mais doit être confirmé par un administrateur
+- Compte confirmé
+- Liste des inscrits à une activité à envoyer 24h avant début d'une activité aux admins ayant le droit "recevoir_listes_inscrits" (nom à changer)

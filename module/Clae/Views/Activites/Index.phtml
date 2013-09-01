@@ -1,2 +1,1075 @@
-<div class="ink-alert basic error"><p>Pas encore implémenté</p></div>
-Activités
+<div class="ink-alert basic">
+	<p>C'est une proposition, mais faudra surement trouver un peu mieux, car pas sûr que ça fonctionne correctement sur tous les navigateurs. Surtout qu'il faut un écran assez large quand même.</p>
+</div>
+
+<style>
+.ink-grid { max-width: 1400px; min-width: 1400px; width: 1400px; }
+table.planning { background: #EEE; }
+table.planning tr td { min-width: 1.78%; width: 1.78%; max-width: 1.78%; padding: 5px 0; }
+table.planning tr td[colspan="2"] { min-width: 3.56%; width: 3.56%; max-width: 3.56%; }
+table.planning tr td[colspan="3"] { min-width: 5.34%; width: 5.34%; max-width: 5.34%; }
+table.planning tr td[colspan="4"] { min-width: 7.12%; width: 7.12%; max-width: 7.12%; }
+table.planning tr td[colspan="5"] { min-width: 8.90%; width: 8.90%; max-width: 8.90%; }
+table.planning tr td[colspan="6"] { min-width: 10.68%; width: 10.68%; max-width: 10.68%; }
+table.planning tr td[colspan="7"] { min-width: 12.46%; width: 12.46%; max-width: 12.46%; }
+table.planning tr td[colspan="8"] { min-width: 14.24%; width: 14.24%; max-width: 14.24%; }
+table.planning tr td[colspan="9"] { min-width: 16.02%; width: 16.02%; max-width: 16.02%; }
+table.planning tr td[colspan="10"] { min-width: 17.80%; width: 17.80%; max-width: 17.80%; }
+table.planning tbody td { background: #FFF; color: white; }
+table.planning tr td.first { border-left: 1px solid #CCC; }
+table.planning tr td.second { border-left: 1px dashed #DDD; }
+table.planning tr td.third { border-left: 1px solid #DDD; }
+table.planning tr td.fourth { border-left: 1px dashed #DDD; }
+table.planning tr td.select { font-size: 0.8em; cursor: pointer; }
+table.planning tr.activite td.select { background: #4c9220; }
+table.planning tr.enfant td.select { background: #1b75ce; }
+table.planning thead td { min-width: 7.14%; width: 7.14%; max-width: 7.14%; }
+table.planning thead tr td, table.planning thead tr th, table.ink-table.bordered tr:last-child td { border-bottom: 1px solid #BBB; }
+table.planning tr td.disabled { background-color: #FFE5E5;
+	/*background-image: repeating-linear-gradient(-45deg, transparent, transparent 0px, rgba(255,255,255,.5) 5px, rgba(255,255,255,.5) 20px);*/
+	/*background-image: repeating-linear-gradient(-45deg, transparent 0px, transparent 1px, #DFDFDF 10px, #DFDFDF 2px);*/
+}
+.day { background: #DFDFDF; padding: 10px 3px 0; border-radius: 3px; }
+</style>
+
+
+<h2 class="content-center"><i class="icon-arrow-left right-space"></i> Semaine 64 (1er septembre au 6 septembre) <i class="icon-arrow-right left-space"></i></h2>
+
+<hr>
+
+<div class="day">
+
+<h3>Lundi 1er septembre</h3>
+
+<table class="ink-table bordered content-center half-top-space planning">
+	<thead>
+		<tr>
+			<th>Horaires</th>
+			<td colspan="4">7h</td>
+			<td colspan="4">8h</td>
+			<td colspan="4">9h</td>
+			<td colspan="4">10h</td>
+			<td colspan="4">11h</td>
+			<td colspan="4">12h</td>
+			<td colspan="4">13h</td>
+			<td colspan="4">14h</td>
+			<td colspan="4">15h</td>
+			<td colspan="4">16h</td>
+			<td colspan="4">17h</td>
+			<td colspan="4">18h</td>
+			<td colspan="4">19h</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="activite">
+			<th>Activités</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td colspan="3" class="select">Repas</td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="2" class="select">Goûter</td>
+			<td colspan="8" class="select">Danse</td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Paul</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Fiora</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="10" class="select"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="column-group gutters">
+	<div class="large-40 medium-40 small-100 content-center">
+		<button class="ink-button blue">Ajouter un nouveau créneau de garderie</button>
+	</div>
+	<div class="large-60 medium-60 small-100">
+		<p>
+			<b><u>Paul (2h) :</u></b> 11h30-13h30<br>
+			<b><u>Fiora (6h30) :</u></b> 11h30-13h30 ; 16h30-19h
+		</p>
+	</div>
+</div>
+
+</div>
+
+<hr>
+
+
+<div class="day">
+
+<h3>Mardi 2 septembre</h3>
+
+<table class="ink-table bordered content-center half-top-space planning">
+	<thead>
+		<tr>
+			<th>Horaires</th>
+			<td colspan="4">7h</td>
+			<td colspan="4">8h</td>
+			<td colspan="4">9h</td>
+			<td colspan="4">10h</td>
+			<td colspan="4">11h</td>
+			<td colspan="4">12h</td>
+			<td colspan="4">13h</td>
+			<td colspan="4">14h</td>
+			<td colspan="4">15h</td>
+			<td colspan="4">16h</td>
+			<td colspan="4">17h</td>
+			<td colspan="4">18h</td>
+			<td colspan="4">19h</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="activite">
+			<th>Activités</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td colspan="3" class="select">Repas</td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="2" class="select">Goûter</td>
+			<td colspan="8" class="select">Danse</td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Paul</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Fiora</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="10" class="select"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+	</tbody>
+	</tbody>
+</table>
+
+<div class="column-group gutters">
+	<div class="large-40 medium-40 small-100 content-center">
+		<button class="ink-button blue">Ajouter un nouveau créneau de garderie</button>
+	</div>
+	<div class="large-60 medium-60 small-100">
+		<p>
+			<b><u>Paul (2h) :</u></b> 11h30-13h30<br>
+			<b><u>Fiora (6h30) :</u></b> 11h30-13h30 ; 16h30-19h
+		</p>
+	</div>
+</div>
+
+</div>
+
+<hr>
+
+
+<div class="day">
+
+<h3>Mercredi 3 septembre</h3>
+
+<table class="ink-table bordered content-center half-top-space planning">
+	<thead>
+		<tr>
+			<th>Horaires</th>
+			<td colspan="4">7h</td>
+			<td colspan="4">8h</td>
+			<td colspan="4">9h</td>
+			<td colspan="4">10h</td>
+			<td colspan="4">11h</td>
+			<td colspan="4">12h</td>
+			<td colspan="4">13h</td>
+			<td colspan="4">14h</td>
+			<td colspan="4">15h</td>
+			<td colspan="4">16h</td>
+			<td colspan="4">17h</td>
+			<td colspan="4">18h</td>
+			<td colspan="4">19h</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="activite">
+			<th>Activités</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td colspan="3" class="select">Repas</td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="2" class="select">Goûter</td>
+			<td colspan="8" class="select">Danse</td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Paul</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Fiora</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="10" class="select"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+	</tbody>
+	</tbody>
+</table>
+
+<div class="column-group gutters">
+	<div class="large-40 medium-40 small-100 content-center">
+		<button class="ink-button blue">Ajouter un nouveau créneau de garderie</button>
+	</div>
+	<div class="large-60 medium-60 small-100">
+		<p>
+			<b><u>Paul (2h) :</u></b> 11h30-13h30<br>
+			<b><u>Fiora (6h30) :</u></b> 11h30-13h30 ; 16h30-19h
+		</p>
+	</div>
+</div>
+
+</div>
+
+<hr>
+
+
+<div class="day">
+
+<h3>Jeudi 4 septembre</h3>
+
+<table class="ink-table bordered content-center half-top-space planning">
+	<thead>
+		<tr>
+			<th>Horaires</th>
+			<td colspan="4">7h</td>
+			<td colspan="4">8h</td>
+			<td colspan="4">9h</td>
+			<td colspan="4">10h</td>
+			<td colspan="4">11h</td>
+			<td colspan="4">12h</td>
+			<td colspan="4">13h</td>
+			<td colspan="4">14h</td>
+			<td colspan="4">15h</td>
+			<td colspan="4">16h</td>
+			<td colspan="4">17h</td>
+			<td colspan="4">18h</td>
+			<td colspan="4">19h</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="activite">
+			<th>Activités</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td colspan="3" class="select">Repas</td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="2" class="select">Goûter</td>
+			<td colspan="8" class="select">Danse</td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Paul</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Fiora</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="10" class="select"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+	</tbody>
+	</tbody>
+</table>
+
+<div class="column-group gutters">
+	<div class="large-40 medium-40 small-100 content-center">
+		<button class="ink-button blue">Ajouter un nouveau créneau de garderie</button>
+	</div>
+	<div class="large-60 medium-60 small-100">
+		<p>
+			<b><u>Paul (2h) :</u></b> 11h30-13h30<br>
+			<b><u>Fiora (6h30) :</u></b> 11h30-13h30 ; 16h30-19h
+		</p>
+	</div>
+</div>
+
+</div>
+
+<hr>
+
+
+<div class="day">
+
+<h3>Vendredi 5 septembre</h3>
+
+<table class="ink-table bordered content-center half-top-space planning">
+	<thead>
+		<tr>
+			<th>Horaires</th>
+			<td colspan="4">7h</td>
+			<td colspan="4">8h</td>
+			<td colspan="4">9h</td>
+			<td colspan="4">10h</td>
+			<td colspan="4">11h</td>
+			<td colspan="4">12h</td>
+			<td colspan="4">13h</td>
+			<td colspan="4">14h</td>
+			<td colspan="4">15h</td>
+			<td colspan="4">16h</td>
+			<td colspan="4">17h</td>
+			<td colspan="4">18h</td>
+			<td colspan="4">19h</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="activite">
+			<th>Activités</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td colspan="3" class="select">Repas</td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="2" class="select">Goûter</td>
+			<td colspan="8" class="select">Danse</td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Paul</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+		<tr class="enfant">
+			<th>Fiora</th>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth"></td>
+			<!-- NEW -->
+			<td class="first"></td>
+			<td class="second"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="8" class="select"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td colspan="10" class="select"></td>
+			<!-- NEW -->
+			<td class="first disabled"></td>
+			<td class="second disabled"></td>
+			<td class="third disabled"></td>
+			<td class="fourth disabled"></td>
+		</tr>
+	</tbody>
+	</tbody>
+</table>
+
+<div class="column-group gutters">
+	<div class="large-40 medium-40 small-100 content-center">
+		<button class="ink-button blue">Ajouter un nouveau créneau de garderie</button>
+	</div>
+	<div class="large-60 medium-60 small-100">
+		<p>
+			<b><u>Paul (2h) :</u></b> 11h30-13h30<br>
+			<b><u>Fiora (6h30) :</u></b> 11h30-13h30 ; 16h30-19h
+		</p>
+	</div>
+</div>
+
+</div>
+
