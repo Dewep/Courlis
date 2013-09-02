@@ -2,7 +2,8 @@
 
 
 class MySQL extends Dewep_MySQL { };
-class User extends Dewep_User { };
+class MySQL_Expr extends Dewep_MySQL_Expr { };
+class User extends Courlis_User { };
 
 
 class Module_Common_Global extends Shape_Core

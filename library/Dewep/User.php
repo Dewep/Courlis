@@ -14,7 +14,12 @@ class Dewep_User
 
 	public static function getRealId()
 	{
-		return self::$id_real;
+		return (self::$id_real ? self::$id_real : self::$id);
+	}
+
+	public static function isLogas()
+	{
+		return (self::$id_real ? true : false);
 	}
 
 	public static function getLogin($id = null)

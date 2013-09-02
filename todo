@@ -6,8 +6,22 @@ OK -> Page de déconnexion
 OK -> User::getName() : Nom+Prénom ou login
 
 
--> Page de préférences
--> Gérer ses enfants
+OK -> Apparence page de préférences
+-> Class Courlis_Child
+-> Vérif mail correct dans pref
+-> Method User::getHash() pour récup le mdp hashé
+-> Supprimer un enfant
+-> Ajouter un enfant
+-> Désactiver le compte en cas de modif
+
+
+-> Page admin
+-> Pouvoir confirmer un user
+-> Pouvoir se logas sur un compte
+-> ...
+
+
+-> Inscription
 
 
 -> Liste des activités
@@ -33,11 +47,10 @@ OK -> User::getName() : Nom+Prénom ou login
 --------------------------------
 
 
--> Inscription
 -> Reset Mot de passe
--> Remplissage auto des input/textarea/... si déjà fourni, en cas d'erreur par exemple (en passant $_REQUEST)
+CANCEL -> Remplissage auto des input/textarea/... si déjà fourni, en cas d'erreur par exemple (en passant $_REQUEST)
 -> Système de cache
--> Mot de passe en dur dans la BDD
+-> Mot de passe en dur dans la BDD (Faudra voir avec User::getHash())
 OK -> Quand même accédé à son compte avec un compte non confirmé
 -> Vérifier permission de chaque action (connecté, droits, compte non confirmé, ...)
 

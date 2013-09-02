@@ -35,7 +35,18 @@ class Module_User_Preferences extends Module_User
 		}
 		if (isset($_POST['compte_name']))
 		{
-			// On modifie ces infos générales
+			$data = array();
+			if (isset($_POST['compte_name']) && $_POST['compte_name'] && User::get()->name != $_POST['compte_name'])
+				$data['name'] = $_POST['compte_name'];
+			if (isset($_POST['compte_firstname']) && $_POST['compte_firstname'] && User::get()->firstname != $_POST['compte_firstname'])
+				$data['firstname'] = $_POST['compte_firstname'];
+			if (isset($_POST['compte_mail']) && $_POST['compte_mail'] && User::get()->mail != $_POST['compte_mail'])
+				$data['mail'] = $_POST['compte_mail'];
+			if (isset($_POST['compte_pass']) && $_POST['compte_pass'])
+				$data['password'] = $_POST['compte_pass'];
+			if (count($data))
+				User::set($data);
+			$this->alert('Votre compte', 'Informations enregistrées.', 'success', false);
 		}
 		$this->view->posts = array(
 				'compte_name' => (isset($_REQUEST['compte_name']) ? $_REQUEST['compte_name'] : User::get()->name),
