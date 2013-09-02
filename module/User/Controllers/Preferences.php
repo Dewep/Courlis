@@ -25,13 +25,33 @@ class Module_User_Preferences extends Module_User
 
 		if (!User::getId())
 			return $this->alert('Accès restreint', 'Vous ne pouvez pas accéder à cette page, vous n\'êtes pas connecté.');
-		if (isset($_POST['child_name']))
+		if (isset($_POST['child_name']) && isset($_POST['child_firstname']) && isset($_POST['child_birthday']))
 		{
-			// On ajoute un enfant
+			try
+			{
+				Courlis_Child::create(array(
+						'name' => $_POST['child_name'],
+						'firstname' => $_POST['child_firstname'],
+						'birthday' => $_POST['child_birthday']
+					));
+				$this->alert('Vos enfants', 'Votre enfant a bien ete modifie.', 'success', false);
+			}
+			catch (Exception $e)
+			{
+				$this->alert('Impossible d\'ajouter cet enfant', $e->getMessage(), 'error', false);
+			}
 		}
-		if (isset($_POST['delete_child']))
+		if (isset($_POST['delete_child']) && isset($_POST['child']))
 		{
-			// On supprime un enfant
+			try
+			{
+				Courlis_Child::delete($_POST['child']);
+				$this->alert('Vos enfants', 'Votre enfant a bien ete supprime.', 'success', false);
+			}
+			catch (Exception $e)
+			{
+				$this->alert('Impossible de supprimer cet enfant', $e->getMessage(), 'error', false);
+			}
 		}
 		if (isset($_POST['compte_name']))
 		{
@@ -54,8 +74,8 @@ class Module_User_Preferences extends Module_User
 				'compte_mail' => (isset($_REQUEST['compte_mail']) ? $_REQUEST['compte_mail'] : User::get()->mail),
 				'child_name' => (isset($_REQUEST['child_name']) ? $_REQUEST['child_name'] : ''),
 				'child_firstname' => (isset($_REQUEST['child_firstname']) ? $_REQUEST['child_firstname'] : ''),
-				'child_birthday' => (isset($_REQUEST['child_birthday ']) ? $_REQUEST['child_birthday '] : '')//,
-				//'name' => Clae::get()
+				'child_birthday' => (isset($_REQUEST['child_birthday ']) ? $_REQUEST['child_birthday '] : ''),
+				'children' => Courlis_Child::get()
 			);
 	}
 }

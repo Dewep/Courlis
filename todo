@@ -53,6 +53,9 @@ CANCEL -> Remplissage auto des input/textarea/... si déjà fourni, en cas d'err
 -> Mot de passe en dur dans la BDD (Faudra voir avec User::getHash())
 OK -> Quand même accédé à son compte avec un compte non confirmé
 -> Vérifier permission de chaque action (connecté, droits, compte non confirmé, ...)
+-> Reconnexion auto
+-> Format date
+-> Verif pas d'action sur les lignes disabled=1
 
 
 

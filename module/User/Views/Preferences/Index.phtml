@@ -46,17 +46,19 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Nom Prénom</td>
-					<td>16/02/1994</td>
-					<td>
-						<form method="post">
-							<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
-							<input type="hidden" name="child" value="id">
-							<input type="submit" name="delete_child" class="ink-button button-small red" value="Supprimer">
-						</form>
-					</td>
-				</tr>
+				<?php foreach ($this->posts['children'] as $value): ?>
+					<tr>
+						<td><?php echo $value->name . ' ' . $value->firstname; ?></td>
+						<td><?php echo $value->birthday; ?></td>
+						<td>
+							<form method="post">
+								<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
+								<input type="hidden" name="child" value="<?php echo $value->id; ?>">
+								<input type="submit" name="delete_child" class="ink-button button-small red" value="Supprimer">
+							</form>
+						</td>
+					</tr>
+				<?php endforeach; ?>
 			</tbody>
 		</table>
 		<hr>
