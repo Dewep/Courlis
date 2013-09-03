@@ -7,12 +7,14 @@ OK -> User::getName() : Nom+Prénom ou login
 
 
 OK -> Apparence page de préférences
--> Class Courlis_Child
--> Vérif mail correct dans pref
+OK -> Class Courlis_Child
+OK -> Vérif mail correct dans pref
+OK -> Supprimer un enfant
+OK -> Ajouter un enfant
+OK -> Désactiver le compte en cas de modif
+
+
 -> Method User::getHash() pour récup le mdp hashé
--> Supprimer un enfant
--> Ajouter un enfant
--> Désactiver le compte en cas de modif
 
 
 -> Page admin

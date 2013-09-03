@@ -29,6 +29,36 @@ class Module_Common_Global extends Shape_Core
 		return ($type == 'success' ? true : false);
 	}
 
+	public function alertOverride($title = null, $content = null, $type = null, $force = null)
+	{
+		if (!$this->view->alert)
+			return false;
+		if ($title !== null)
+			$this->view->alert->title = $title;
+		if ($content !== null)
+			$this->view->alert->content = $content;
+		if ($type !== null)
+			$this->view->alert->type = $type;
+		if ($force !== null)
+			$this->view->alert->force = $force;
+		return true;
+	}
+
+	public function alertAppend($title = null, $content = null, $type = null, $force = null)
+	{
+		if (!$this->view->alert)
+			return false;
+		if ($title !== null)
+			$this->view->alert->title .= $title;
+		if ($content !== null)
+			$this->view->alert->content .= $content;
+		if ($type !== null)
+			$this->view->alert->type .= $type;
+		if ($force !== null)
+			$this->view->alert->force .= $force;
+		return true;
+	}
+
 	public function inter_global()
 	{
 	}

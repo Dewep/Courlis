@@ -31,7 +31,7 @@ class Courlis_Child
 		$infos['mtime'] = new MySQL_Expr('NOW()');
 		$infos['disabled'] = '1';
 		if (!(MySQL::update('child', $infos, "`id` = '$id_child' AND `user_id` = '$id'")))
-			throw new Exception("Vous n'avez pas les permissions de supprimer cet enfant.");
+			throw new Exception("Vous n'avez pas les permissions pour supprimer cet enfant.");
 		return true;			
 	}
 
