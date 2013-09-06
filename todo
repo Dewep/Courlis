@@ -14,13 +14,19 @@ OK -> Ajouter un enfant
 OK -> Désactiver le compte en cas de modif
 
 
--> Method User::getHash() pour récup le mdp hashé
+OK -> Method User::getHash() pour récup le mdp hashé
 
 
 -> Page admin
+-> Liste user en attente de validation
 -> Pouvoir confirmer un user
+-> Liste des utilisateurs
+-> Liste des administrateurs
 -> Pouvoir se logas sur un compte
--> ...
+-> Pouvoir éditer les infos d'un utilisateur/admin
+-> Pouvoir supprimer un utilisateur
+-> Pouvoir éditer les droits d'un administrateur
+-> Pouvoir éditer le footer des mails des différentes tâches
 
 
 -> Inscription
@@ -50,7 +56,7 @@ OK -> Désactiver le compte en cas de modif
 
 
 -> Reset Mot de passe
-CANCEL -> Remplissage auto des input/textarea/... si déjà fourni, en cas d'erreur par exemple (en passant $_REQUEST)
+CANCEL (cas par cas) -> Remplissage auto des input/textarea/... si déjà fourni, en cas d'erreur par exemple (en passant $_REQUEST)
 -> Système de cache
 -> Mot de passe en dur dans la BDD (Faudra voir avec User::getHash())
 OK -> Quand même accédé à son compte avec un compte non confirmé
@@ -58,6 +64,7 @@ OK -> Quand même accédé à son compte avec un compte non confirmé
 -> Reconnexion auto
 -> Format date
 -> Verif pas d'action sur les lignes disabled=1
+-> Statistiques
 
 
 

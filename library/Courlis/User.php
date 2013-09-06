@@ -17,6 +17,8 @@ class Courlis_User extends Dewep_User
 		$id = ($id) ? $id : self::$id;
 		$infos['id_modifier'] = self::getRealId();
 		$infos['mtime'] = new MySQL_Expr('NOW()');
+		if (isset($infos['password']))
+			$infos['password'] = User::getHash($infos['password']);
 		return MySQL::update('user', $infos, "`id` = '$id'");
 	}
 
@@ -27,6 +29,25 @@ class Courlis_User extends Dewep_User
 		if (!$res || (!($res = $res->fetch())))
 			return false;
 		return ($res->count ? false : true);
+	}
+
+	public static function getAllUser($type = false, $confirm = false)
+	{
+		$res = MySQL::query("SELECT
+				`user`.`id`,
+				`user`.`login`,
+				`user`.`name`,
+				`user`.`firstname`,
+				`user`.`mail`,
+				`user`.`type`,
+				`user`.`confirm`
+			FROM `user`
+			WHERE
+				`user`.`disable` = 0
+				" . ($type ? ("AND `user`.`type` = '" . MySQL::escape($type) . "'") : '') . "
+				" . ($confirm ? 'AND `user`.`confirm` = 1' : '') . "
+				;");
+		return $res->fetchAll();
 	}
 }
 

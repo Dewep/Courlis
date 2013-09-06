@@ -82,15 +82,21 @@ class Dewep_User
 		return true;
 	}
 
-	public static function connect($identifiant, $password)
+	public static function getHash($password = "")
 	{
 		// @WARNING : Mot de passe en dur autorisé seulement pour les tests !
+		return $password;
+		return sha1(Shape::getConf('security', 'salt') . $password);
+	}
+
+	public static function connect($identifiant, $password)
+	{
 		$type = filter_var($identifiant, FILTER_VALIDATE_EMAIL) ? 'mail' : 'login';
 		$result = MySQL::query("SELECT `user`.`id`, `user`.`login`, `user`.`disabled`
 			FROM `user`
 			WHERE
 				`user`.`$type` = '".MySQL::escape($identifiant)."'
-				AND (`user`.`password` = '".MySQL::escape(sha1(Shape::getConf('security', 'salt') . $password))."' OR `user`.`password` = '".MySQL::escape($password)."')
+				AND (`user`.`password` = '".MySQL::escape(User::getHash($password))."')
 			LIMIT 1;");
 		$result = $result->fetch();
 		if (!$result || !$result->id || !$result->login)
@@ -100,6 +106,36 @@ class Dewep_User
 		self::$id = $result->id;
 		$_SESSION['User'] = array('Id' => $result->id);
 		return $result->id;
+	}
+
+	public static function calcString($login, $firstname, $name)
+	{
+		if ($name && $firstname)
+			return $name . ' ' . $firstname;
+		else if ($name)
+			return $name;
+		else if ($firstname)
+			return $firstname;
+		else
+			return $login;
+	}
+
+	public static function getRigths($id = 0)
+	{
+		$id = ($id) ? $id : User::getId();
+
+		$rights = MySQL::query("SELECT
+				`right`.`name`,
+				" . ((self::get($id)->type == 'root') ? "1" : "(CASE WHEN `user_right`.`id_user` IS NOT NULL THEN 1 ELSE 0 END)") . " AS 'value'
+			FROM `right`
+				LEFT JOIN `user_right` ON `right`.`id` = `user_right`.`id_right` AND `user_right`.`id_user` = '".MySQL::escape($id)."'
+			WHERE
+				`user_right`.`id_user` IS NOT NULL
+				OR '".MySQL::escape(self::get($id)->type)."' = 'root';");
+		$result = new stdClass();
+		foreach ($rights as $right)
+			$result->{$right->name} = ($right->value == '1') ? true : false;
+		return $result;
 	}
 
 	public static function get($id = 0)
@@ -125,27 +161,10 @@ class Dewep_User
 		if (!$result || !$result->name)
 			throw new Exception("Impossible de trouver ce compte.");
 
-		$rights = MySQL::query("SELECT
-				`right`.`name`,
-				" . (($result->type == 'root') ? "1" : "(CASE WHEN `user_right`.`id_user` IS NOT NULL THEN 1 ELSE 0 END)") . " AS 'value'
-			FROM `right`
-				LEFT JOIN `user_right` ON `right`.`id` = `user_right`.`id_right` AND `user_right`.`id_user` = '".MySQL::escape(User::getId())."'
-			WHERE
-				`user_right`.`id_user` IS NOT NULL
-				OR '".MySQL::escape($result->type)."' = 'root';");
-		$result->rights = new stdClass();
-		foreach ($rights as $right)
-		{
-			$result->rights->{$right->name} = ($right->value == '1') ? true : false;
-		}
+		self::$users[$id] = $result;
 
-		$result->string = $result->login;
-		if ($result->name && $result->firstname)
-			$result->string = $result->name . ' ' . $result->firstname;
-		else if ($result->name)
-			$result->string = $result->name;
-		else if ($$result->firstname)
-			$result->string = $result->firstname;
+		$result->rights = User::getRigths($id);
+		$result->string = User::calcString($result->login, $result->firstname, $result->name);
 
 		self::$users[$id] = $result;
 
