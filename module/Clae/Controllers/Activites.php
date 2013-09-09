@@ -5,6 +5,7 @@ class Module_Clae_Activites extends Module_Ecole
 {
 	public function init_controller()
 	{
+		return true;
 	}
 
 	public function inter_controller()

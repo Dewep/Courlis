@@ -17,12 +17,12 @@ OK -> Désactiver le compte en cas de modif
 OK -> Method User::getHash() pour récup le mdp hashé
 
 
--> Page admin
--> Liste user en attente de validation
--> Pouvoir confirmer un user
--> Liste des utilisateurs
--> Liste des administrateurs
--> Pouvoir se logas sur un compte
+OK -> Page admin
+OK -> Liste user en attente de validation
+OK -> Pouvoir confirmer un user
+OK -> Liste des utilisateurs
+OK -> Liste des administrateurs
+OK -> Pouvoir se logas sur un compte
 -> Pouvoir éditer les infos d'un utilisateur/admin
 -> Pouvoir supprimer un utilisateur
 -> Pouvoir éditer les droits d'un administrateur
@@ -65,6 +65,7 @@ OK -> Quand même accédé à son compte avec un compte non confirmé
 -> Format date
 -> Verif pas d'action sur les lignes disabled=1
 -> Statistiques
+-> htmlspecial sur les views
 
 
 

@@ -16,6 +16,7 @@ class Module_Common_Global extends Shape_Core
 
 		if (!Dewep_CSRF::check())
 			$this->alert('Token invalide', 'Vous avez été inactif pendant trop longtemps. Pour des raisons de sécurité, votre requête a été rejetée.', 'error', false);
+		return true;
 	}
 
 	public function alert($title, $content, $type = 'error', $force = true)

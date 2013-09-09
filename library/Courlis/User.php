@@ -9,7 +9,9 @@ class Courlis_User extends Dewep_User
 			SET `confirm` = ".intval($etat).",
 				`id_modifier` = '".MySQL::escape(self::$id_real)."',
 				`mtime` = NOW()
-			WHERE `id` = '".($id ? $id : self::$id)."'");
+			WHERE
+				`id` = '".($id ? $id : self::$id)."'
+				AND `type` = 'parent';");
 	}
 
 	public static function set($infos = array(), $id = 0)
@@ -31,7 +33,7 @@ class Courlis_User extends Dewep_User
 		return ($res->count ? false : true);
 	}
 
-	public static function getAllUser($type = false, $confirm = false)
+	public static function getAll($type = false, $confirm = false)
 	{
 		$res = MySQL::query("SELECT
 				`user`.`id`,
@@ -43,7 +45,7 @@ class Courlis_User extends Dewep_User
 				`user`.`confirm`
 			FROM `user`
 			WHERE
-				`user`.`disable` = 0
+				`user`.`disabled` = 0
 				" . ($type ? ("AND `user`.`type` = '" . MySQL::escape($type) . "'") : '') . "
 				" . ($confirm ? 'AND `user`.`confirm` = 1' : '') . "
 				;");

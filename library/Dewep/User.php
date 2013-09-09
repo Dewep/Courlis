@@ -43,8 +43,10 @@ class Dewep_User
 		$real_id = self::$id_real ? self::$id_real : self::$id;
 		if (!isset(self::$users[$real_id]))
 			self::get($real_id);
-		if (!self::$users[$real_id]->rights->logas)
+		if (!isset(self::$users[$real_id]->rights->logas))
 			throw new Exception("Vous n'avez pas les permissions pour logas.");
+		if (self::get($id)->type != 'parent')
+			throw new Exception("Vous n'avez pas les permissions pour vous logas sur ce compte.");
 		self::$id_real = $real_id;
 		self::$id = $id;
 		$_SESSION['User']['Logas'] = $id;
@@ -76,9 +78,18 @@ class Dewep_User
 
 	public static function logout()
 	{
-		unset($_SESSION['User']);
-		self::$id = 0;
-		self::$id_real = 0;
+		if (self::isLogas())
+		{
+			unset($_SESSION['User']['Logas']);
+			self::$id = self::$id_real;
+			self::$id_real = 0;
+		}
+		else
+		{
+			unset($_SESSION['User']);
+			self::$id = 0;
+			self::$id_real = 0;
+		}
 		return true;
 	}
 

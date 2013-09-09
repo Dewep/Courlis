@@ -11,6 +11,7 @@ class Module_User_Session extends Module_User
 {
 	public function init_controller()
 	{
+		return true;
 	}
 
 	public function inter_controller()
@@ -46,6 +47,13 @@ class Module_User_Session extends Module_User
 		$this->view->title = 'Se déconnecter';
 		$this->view->subtitle = 'Les Courlis';
 
+		if (User::isLogas())
+		{
+			User::logout();
+			header('Location: ' . $this->baseUrl() . 'User/Administration/#parents', 301);
+			echo 'Move to ' . $this->baseUrl() . 'User/Administration/#parents';
+			exit(301);
+		}
 		if (!User::getId())
 			return $this->alert('Déconnexion impossible', 'Vous n\'êtes pas connecté.');
 		User::logout();

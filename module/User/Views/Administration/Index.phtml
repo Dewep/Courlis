@@ -1,2 +1,117 @@
-<div class="ink-alert basic error"><p>Pas encore implémenté</p></div>
-Administration
+<div class="column-group gutters">
+	<div class="large-100 medium-100 small-100">
+		<h3>Gestions des utilisateurs</h3>
+		<div class="ink-tabs left" id="manage_users">
+			<ul class="tabs-nav">
+				<li><a href="#confirm">À confirmer (<?php echo count($this->users['confirm']); ?>)</a></li>
+				<li><a href="#parents">Comptes parents (<?php echo count($this->users['parents']); ?>)</a></li>
+				<li><a href="#admin">Comptes admins (<?php echo count($this->users['admin']); ?>)</a></li>
+			</ul>
+			<div id="confirm" class="tabs-content">
+				<table class="ink-table alternating bordered content-center half-top-space" data-page-size="10">
+					<thead>
+						<tr>
+							<th data-sortable="true" width="33%">Nom</th>
+							<th data-sortable="true" width="33%">Prénom</th>
+							<th data-sortable="true" width="34%">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($this->users['confirm'] as $user): ?>
+							<tr>
+								<td><?php echo $user->name; ?></td>
+								<td><?php echo $user->firstname; ?></td>
+								<td>
+									<form method="post">
+										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
+										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
+										<input type="submit" name="confirm" class="ink-button button-small green" value="Confirmer">
+									</form>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+				<nav class="ink-navigation" id="nav_confirm"><ul class="pagination"></ul></nav>
+			</div>
+			<div id="parents" class="tabs-content">
+				<table class="ink-table alternating bordered content-center half-top-space" data-page-size="10">
+					<thead>
+						<tr>
+							<th data-sortable="true" width="33%">Nom</th>
+							<th data-sortable="true" width="33%">Prénom</th>
+							<th data-sortable="true" width="34%">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($this->users['parents'] as $user): ?>
+							<tr>
+								<td><?php echo $user->name; ?></td>
+								<td><?php echo $user->firstname; ?></td>
+								<td>
+									<form method="post">
+										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
+										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
+										<input type="submit" name="logas" class="ink-button button-small blue" value="Logas">
+										<input type="submit" name="edit_parent" class="ink-button button-small blue" value="Éditer">
+										<input type="submit" name="delete_parent" class="ink-button button-small red" value="Supprimer">
+									</form>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+				<nav class="ink-navigation" id="nav_users"><ul class="pagination"></ul></nav>
+			</div>
+			<div id="admin" class="tabs-content">
+				<table class="ink-table alternating bordered content-center half-top-space" data-page-size="10">
+					<thead>
+						<tr>
+							<th data-sortable="true" width="33%">Nom</th>
+							<th data-sortable="true" width="33%">Prénom</th>
+							<th data-sortable="true" width="34%">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($this->users['admin'] as $user): ?>
+							<tr>
+								<td><?php echo $user->name; ?></td>
+								<td><?php echo $user->firstname; ?></td>
+								<td>
+									<form method="post">
+										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
+										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
+										<input type="submit" name="edit_admin" class="ink-button button-small blue" value="Éditer">
+										<input type="submit" name="delete_admin" class="ink-button button-small red" value="Supprimer">
+									</form>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+				<nav class="ink-navigation" id="nav_admin"><ul class="pagination"></ul></nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var tabs = new Ink.UI.Tabs('#manage_users', {
+		active: '#confirm',
+		onBeforeChange: function(tab){
+			/*console.log('beforeChange', tab);*/
+		},
+		onChange: function(tab){
+			/*console.log('Changed', tab);*/
+		}
+	});
+	var table_confirm = new Ink.UI.Table('#confirm .ink-table', {
+		pagination: '#nav_confirm'
+	});
+	var table_users = new Ink.UI.Table('#parents .ink-table', {
+		pagination: '#nav_users'
+	});
+	var table_admin = new Ink.UI.Table('#admin .ink-table', {
+		pagination: '#nav_admin'
+	});
+</script>

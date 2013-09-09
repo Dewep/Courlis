@@ -5,6 +5,7 @@ class Module_Ecole_Blog extends Module_Ecole
 {
 	public function init_controller()
 	{
+		return true;
 	}
 
 	public function inter_controller()

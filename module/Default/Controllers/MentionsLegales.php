@@ -5,6 +5,7 @@ class Module_Default_MentionsLegales extends Module_Default
 {
 	public function init_controller()
 	{
+		return true;
 	}
 
 	public function inter_controller()

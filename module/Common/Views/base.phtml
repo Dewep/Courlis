@@ -24,7 +24,7 @@
 
 	<script type="text/javascript" src="<?php echo $this->baseUrl('static/ink-2.2.0/js/holder.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo $this->baseUrl('static/ink-2.2.0/js/ink.min.js'); ?>"></script>
-	<script type="text/javascript" src="<?php echo $this->baseUrl('static/ink-2.2.0/js/ink-ui.min.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo $this->baseUrl('static/ink-2.2.0/js/ink-ui.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo $this->baseUrl('static/jquery/jquery-1.10.2.min.js'); ?>"></script>
 	<!--<script type="text/javascript" src="<?php echo $this->baseUrl('static/ink-2.2.0/js/autoload.js'); ?>"></script>-->
 	<script type="text/javascript" src="<?php echo $this->baseUrl('static/ink-2.2.0/js/html5shiv.js'); ?>"></script>
@@ -43,7 +43,7 @@
 			border-bottom: 1px solid #CCC;
 			background: #DFDFDF;
 			padding: 2em 0 1em;
-			margin-bottom: 1em;
+			margin: 0 0 1em;
 			font-size: 1.1em;
 		}
 		h1 {
@@ -90,10 +90,26 @@
 			font-weight: normal;
 			font-size: 13px;
 		}
+		.ink-tabs .tabs-content {
+			overflow: hidden;
+		}
 	</style>
 </head>
 
 <body>
+
+	<?php if (User::isLogas()): ?>
+		<nav class="ink-navigation">
+			<ul class="menu horizontal orange">
+				<li>
+					<span class="left-space">
+						Vous êtes connecté de force avec le compte de <?php echo User::getString(); ?>.
+						<a href="<?php echo $this->baseUrl('User/Session/Deconnexion'); ?>" class="left-space">Déconnexion</a>
+					</span>
+				</li>
+			</ul>
+		</nav>
+	<?php endif; ?>
 
 	<div id="header">
 		<div class="ink-grid">

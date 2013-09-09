@@ -5,6 +5,7 @@ class Module_Default_Aide extends Module_Default
 {
 	public function init_controller()
 	{
+		return true;
 	}
 
 	public function inter_controller()

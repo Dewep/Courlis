@@ -8,6 +8,7 @@ class Module_User_Preferences extends Module_User
 {
 	public function init_controller()
 	{
+		return true;
 	}
 
 	public function inter_controller()
