@@ -61,6 +61,27 @@ class Module_User_Administration extends Module_User
 				$this->view->users['admin'][] = $user;
 		}
 	}
+
+	public function getUserAction()
+	{
+		if (!isset($_POST['id']))
+		{
+			$this->view->error = 'ID incorrect.';
+			return ;
+		}
+
+		try
+		{
+			$user = User::get(intval($_POST['id']));
+			foreach ($user as $key => $value) {
+				$this->view->$key = $value;
+			}
+		}
+		catch (Exception $e)
+		{
+			$this->view->error = $e->getMessage();
+		}
+	}
 }
 
 

@@ -93,7 +93,85 @@
 		.ink-tabs .tabs-content {
 			overflow: hidden;
 		}
+		.ink-modal {
+			height: auto;
+		}
+		.ink-modal > .modal-footer, .ink-modal > footer {
+			position: static;
+		}
+		.ink-shade {
+			background: none;
+			position: absolute;
+			/*display: block;*/
+		}
+		.ink-shade-real {
+			background: rgba(0, 0, 0, 0.8);
+			position: fixed;
+		}
+		div.waiter {
+			background: url('<?php echo $this->baseUrl('static/waiter.gif'); ?>') center top no-repeat;
+			margin: 20px;
+			padding-top: 32px;
+			font-size: 1.2em;
+			text-shadow: #AAA 0.1em 0.1em 0.2em;
+			text-align: center;
+		}
 	</style>
+
+	<script type="text/javascript">
+	function baseUrl(path)
+	{
+		var base = "<?php echo $this->baseUrl(); ?>";
+		return (path) ? (base + path) : (base);
+	};
+	</script>
+	<script type="text/javascript">
+	(function($){
+		/*
+		 *
+		 * Fonction pour ouvrir une popup
+		 *
+		 * title: Titre de la popup (en html)
+		 * content: Contenu principal de la popup (en html)
+		 * buttons: Array d'objets créant chacun un bouton. Chaque objet :
+		 *		- pos: left/right (position du bouton dans le footer)
+		 *		- class: Classes du bouton séparées par des espaces
+		 *		- content: Contenu du bouton (en html)
+		 *		- onclick: Fonction à appelée lors du clique sur ce bouton. Prototype de la fct : fct(modal_ink, params)
+		 *		- params: Options pour la fonction lors du clic
+		 *
+		*/
+		var id_popup = 0;
+		$.fn.popup = function(title, content, buttons, data)
+		{
+			id_popup++;
+			$(this).append('<div class="ink-shade fade ink-shade-real"></div><div class="ink-shade fade"><div id="popupink' + id_popup + '" class="ink-modal" data-trigger="undefined">' +
+				'<div class="modal-header"><button class="modal-close ink-dismiss"></button><h5></h5></div>' +
+				'<div class="modal-body content"></div>' +
+				'<div class="modal-footer"><div class="push-left"></div><div class="push-right"></div></div>' +
+			'</div></div>');
+			var popup = $('#popupink' + id_popup, this);
+			popup.find('.modal-header h5').html(title);
+			popup.find('.modal-body').html(content);
+			var footer = popup.find('.modal-footer');
+			for (var i = 0; i < buttons.length; i++) {
+				footer.find('.push-' + (buttons[i].pos == 'left' ? 'left' : 'right')).append('<button data-id="' + i + '" class="ink-button ' + buttons[i].className + '">' + buttons[i].content + '</button>');
+			};
+			for (var j = 0; j < data.length; j++) {
+				popup.data(data[j].name, data[j].value);
+				if (typeof data[j].value == 'string')
+					popup.attr('data-' + data[j].name, data[j].value);
+			};
+			var modal = new Ink.UI.Modal('#popupink' + id_popup, {shade: $(this).find('.ink-shade:first').get(0)});
+			modal._init(false);
+			popup.data('ink', modal);
+			footer.find('button').click(function(event) {
+				buttons[$(this).data('id')].onclick(modal, buttons[$(this).data('id')].params);
+			});
+			return ($(this));
+		};
+	})(jQuery);
+	</script>
 </head>
 
 <body>

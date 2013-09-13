@@ -3448,7 +3448,8 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
             onDismiss:    undefined,
             closeOnClick: false,
             responsive:    true,
-            disableScroll: true
+            disableScroll: false,
+            shade:			undefined
         };
 
 
@@ -3468,8 +3469,6 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
         } else {
             this._markupMode = false;
         }
-
-
 
 
         if( !this._markupMode ){
@@ -3575,7 +3574,13 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
 
             Css.addClassName( this._modalShadow,'ink-shade' );
             this._modalShadowStyle.display = this._modalDivStyle.display = 'block';
+		    if (typeof this._options.shade != 'undefined')
+            	this._options.shade.style.display = 'block';
             setTimeout(Ink.bind(function(){
+		        if (typeof this._options.shade != 'undefined')
+		        {
+                	Css.addClassName( this._options.shade,'visible' );
+		        }
                 Css.addClassName( this._modalShadow,'visible' );
                 Css.addClassName( this._modalDiv,'visible' );
             }, this),100);
@@ -3613,10 +3618,10 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
                     this._modalDivStyle.maxHeight = Element.elementHeight(this._modalDiv) + 'px';
                 }
             } else {
-                this._modalDivStyle.maxHeight = this._modalDivStyle.height = Element.elementHeight(this._modalDiv) + 'px';
+                //this._modalDivStyle.maxHeight = this._modalDivStyle.height = Element.elementHeight(this._modalDiv) + 'px';
             }
 
-            if( parseInt(elem.clientHeight,10) <= parseInt(this._modalDivStyle.height,10) ){
+            if( typeof this._options.height !== 'undefined' && parseInt(elem.clientHeight,10) <= parseInt(this._modalDivStyle.height,10) ){
                 this._modalDivStyle.height = (~~(parseInt(elem.clientHeight,10)*0.9))+'px';
             }
 
@@ -3713,19 +3718,22 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
                 this._modalDivStyle.width = (~~( currentViewportWidth * 0.9)) + 'px';
             }
 
-            if( (currentViewportHeight > this.originalStatus.height) && (parseInt(this._modalDivStyle.maxHeight,10) >= Element.elementHeight(this._modalDiv) ) ){
+            if (typeof this._options.height !== 'undefined')
+            {
+	            if( (currentViewportHeight > this.originalStatus.height) && (parseInt(this._modalDivStyle.maxHeight,10) >= Element.elementHeight(this._modalDiv) ) ){
 
-                /**
-                 * The viewport height has expanded
-                 */
-                //this._modalDivStyle.maxHeight =
-                this._modalDivStyle.height = this._modalDivStyle.maxHeight;
+	                /**
+	                 * The viewport height has expanded
+	                 */
+	                //this._modalDivStyle.maxHeight =
+	                this._modalDivStyle.height = this._modalDivStyle.maxHeight;
 
-            } else {
-                /**
-                 * The viewport height has not changed, or reduced
-                 */
-                this._modalDivStyle.height = (~~( currentViewportHeight * 0.9)) + 'px';
+	            } else {
+	                /**
+	                 * The viewport height has not changed, or reduced
+	                 */
+	                this._modalDivStyle.height = (~~( currentViewportHeight * 0.9)) + 'px';
+	            }
             }
 
             this._resizeContainer();
@@ -3800,9 +3808,12 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
                 containerHeight -= Element.elementHeight(this._modalFooter);
             }
 
-            this._contentContainer.style.height = containerHeight + 'px';
-            if( containerHeight !== Element.elementHeight(this._contentContainer) ){
-                this._contentContainer.style.height = ~~(containerHeight - (Element.elementHeight(this._contentContainer) - containerHeight)) + 'px';
+            if (typeof this._options.height !== 'undefined')
+            {
+	            this._contentContainer.style.height = containerHeight + 'px';
+	            if( containerHeight !== Element.elementHeight(this._contentContainer) ){
+	                this._contentContainer.style.height = ~~(containerHeight - (Element.elementHeight(this._contentContainer) - containerHeight)) + 'px';
+	            }
             }
 
             if( this._markupMode ){ return; }
@@ -3865,12 +3876,18 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
             } else {
                 Css.removeClassName( this._modalDiv, 'visible' );
                 Css.removeClassName( this._modalShadow, 'visible' );
+		        if (typeof this._options.shade != 'undefined')
+		        {
+                	Css.removeClassName( this._options.shade,'visible' );
+		        }
 
                 var
                     dismissInterval,
                     transitionEndFn = Ink.bindEvent(function(){
                         if( !dismissInterval ){ return; }
                         this._modalShadowStyle.display = 'none';
+					    if (typeof this._options.shade != 'undefined')
+			            	this._options.shade.style.display = 'none';
                         Event.stopObserving(document,'transitionend',transitionEndFn);
                         Event.stopObserving(document,'oTransitionEnd',transitionEndFn);
                         Event.stopObserving(document,'webkitTransitionEnd',transitionEndFn);
@@ -3885,6 +3902,16 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
 
                 if( !dismissInterval ){
                     dismissInterval = setInterval(Ink.bind(function(){
+					    if (typeof this._options.shade != 'undefined')
+					    {
+	                        if( this._options.shade.style.opacity > 0 ){
+	                            return;
+	                        } else {
+	                            this._options.shade.style.display = 'none';
+	                            clearInterval(dismissInterval);
+	                            dismissInterval = undefined;
+                        	}
+					    }
                         if( this._modalShadowStyle.opacity > 0 ){
                             return;
                         } else {

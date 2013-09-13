@@ -53,7 +53,7 @@
 										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
 										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
 										<input type="submit" name="logas" class="ink-button button-small blue" value="Logas">
-										<input type="submit" name="edit_parent" class="ink-button button-small blue" value="Éditer">
+										<input type="button" name="edit_user" data-id="<?php echo $user->id; ?>" class="ink-button button-small blue" value="Éditer">
 										<input type="submit" name="delete_parent" class="ink-button button-small red" value="Supprimer">
 									</form>
 								</td>
@@ -81,7 +81,7 @@
 									<form method="post">
 										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
 										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
-										<input type="submit" name="edit_admin" class="ink-button button-small blue" value="Éditer">
+										<input type="button" name="edit_user" data-id="<?php echo $user->id; ?>" class="ink-button button-small blue" value="Éditer">
 										<input type="submit" name="delete_admin" class="ink-button button-small red" value="Supprimer">
 									</form>
 								</td>
@@ -91,27 +91,95 @@
 				</table>
 				<nav class="ink-navigation" id="nav_admin"><ul class="pagination"></ul></nav>
 			</div>
+			<div class="popup"></div>
 		</div>
+		<script type="text/javascript">
+		$(function(){
+			var tabs = new Ink.UI.Tabs('#manage_users', {
+				active: '#confirm',
+				onBeforeChange: function(tab){
+					/*console.log('beforeChange', tab);*/
+				},
+				onChange: function(tab){
+					/*console.log('Changed', tab);*/
+				}
+			});
+			var table_confirm = new Ink.UI.Table('#confirm .ink-table', {
+				pagination: '#nav_confirm'
+			});
+			var table_users = new Ink.UI.Table('#parents .ink-table', {
+				pagination: '#nav_users'
+			});
+			var table_admin = new Ink.UI.Table('#admin .ink-table', {
+				pagination: '#nav_admin'
+			});
+			$('#manage_users input[type=button][name=edit_user]').click(function(event) {
+				var id_user = $(this).parent().find('input[name=user_id]').val();
+				var token = $(this).parent().find('input[name=token]').val();
+				$('#manage_users .popup').popup(
+					'Éditer un utilisateur',
+					'<div class="waiter">Chargement en cours</div>',
+					[{
+						pos: 'left',
+						className: 'red',
+						content:'Annuler',
+						onclick: function(ink, params){
+							ink.dismiss();
+						},
+						'params': null
+					},
+					{
+						pos: 'right',
+						className: 'green',
+						content: 'Enregistrer',
+						onclick: function(ink, params){
+							if ($('#manage_users .popup .content form'))
+							{
+								// Requete ajax pour enregistrer
+							}
+							else
+								ink.dismiss();
+						},
+						'params': 'test'
+					}],
+					[{name:'width', value:'500px'}]
+				);
+				$.ajax({
+					url: baseUrl('User/Administration/getUser?format=json'),
+					type: 'POST',
+					dataType: 'json',
+					data: {id: id_user, token: token},
+					success: function(json)
+					{
+						console.log(json);
+						var content = $('#manage_users .popup .content');
+						var template = '' +
+							'<form action="' + baseUrl('User/Administration/setUser?format=json') + '" method="post" class="ink-form">' +
+								'<fieldset>' +
+									'<div class="control-group column-group gutters">' +
+										'<label class="large-30 content-right" for="edit_user_name">Nom :</label>' +
+										'<div class="control large-70">' +
+											'<input type="text" name="name" id="edit_user_name">' +
+										'</div>' +
+										'<label class="large-30 content-right" for="edit_user_firstname">Prénom :</label>' +
+										'<div class="control large-70">' +
+											'<input type="text" name="firstname" id="edit_user_firstname">' +
+										'</div>' +
+										'<label class="large-30 content-right" for="edit_user_mail">E-Mail :</label>' +
+										'<div class="control large-70">' +
+											'<input type="text" name="mail" id="edit_user_mail">' +
+										'</div>' +
+									'</div>' +
+								'</fieldset>' +
+							'</form>';
+						content.html(template);
+						content.find('input[name=name]').val(json.name);
+						content.find('input[name=firstname]').val(json.firstname);
+						content.find('input[name=mail]').val(json.mail);
+					}
+				});
+			});
+		});
+		</script>
 	</div>
 </div>
-
-<script>
-	var tabs = new Ink.UI.Tabs('#manage_users', {
-		active: '#confirm',
-		onBeforeChange: function(tab){
-			/*console.log('beforeChange', tab);*/
-		},
-		onChange: function(tab){
-			/*console.log('Changed', tab);*/
-		}
-	});
-	var table_confirm = new Ink.UI.Table('#confirm .ink-table', {
-		pagination: '#nav_confirm'
-	});
-	var table_users = new Ink.UI.Table('#parents .ink-table', {
-		pagination: '#nav_users'
-	});
-	var table_admin = new Ink.UI.Table('#admin .ink-table', {
-		pagination: '#nav_admin'
-	});
-</script>

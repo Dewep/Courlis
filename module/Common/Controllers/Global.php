@@ -11,8 +11,11 @@ class Module_Common_Global extends Shape_Core
 	public function init_global()
 	{
 		User::connectSession();
-		$this->view->title = 'Les Courlis';
-		$this->view->subtitle = 'Villers-Lès-Luxeuil';
+		if (!isset($_GET['format']))
+		{
+			$this->view->title = 'Les Courlis';
+			$this->view->subtitle = 'Villers-Lès-Luxeuil';
+		}
 
 		if (!Dewep_CSRF::check())
 			$this->alert('Token invalide', 'Vous avez été inactif pendant trop longtemps. Pour des raisons de sécurité, votre requête a été rejetée.', 'error', false);
@@ -62,6 +65,33 @@ class Module_Common_Global extends Shape_Core
 
 	public function inter_global()
 	{
+		if (isset($_GET['format']) && $_GET['format'] == 'json')
+		{
+			$this->setView('json');
+			if (isset($this->view->alert) && $this->view->alert->type == 'error')
+			{
+				$this->view->error = $this->view->alert->title;
+				$this->view->message = $this->view->alert->content;
+			}
+			else if (isset($this->view->alert))
+			{
+				$this->view->success = $this->view->alert->title;
+				$this->view->message = $this->view->alert->content;
+			}
+			if (isset($this->view->error))
+			{
+				header('500 Internal Server Error', true, 500);
+				if (!isset($this->view->message))
+				{
+					$this->view->message = $this->view->error;
+					$this->view->error = 'Erreur';
+				}
+				foreach ($this->view as $key => $value) {
+					if (!in_array($key, array('error', 'message')))
+						unset($this->view->$key);
+				}
+			}
+		}
 	}
 
 	public function end_global()

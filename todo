@@ -23,13 +23,21 @@ OK -> Pouvoir confirmer un user
 OK -> Liste des utilisateurs
 OK -> Liste des administrateurs
 OK -> Pouvoir se logas sur un compte
--> Pouvoir éditer les infos d'un utilisateur/admin
--> Pouvoir supprimer un utilisateur
--> Pouvoir éditer les droits d'un administrateur
--> Pouvoir éditer le footer des mails des différentes tâches
+
+-> Pouvoir éditer les infos générales d'un parent/admin
+-> Pouvoir éditer les droits d'un admin
+-> Pouvoir supprimer un parent/admin
+
+-> Pouvoir créer un parent
+-> Pouvoir créer un admin
 
 
 -> Inscription
+
+
+-> Pouvoir modifier l'info rapide
+
+-> Pouvoir éditer le footer des mails des différentes tâches
 
 
 -> Liste des activités
@@ -66,6 +74,10 @@ OK -> Quand même accédé à son compte avec un compte non confirmé
 -> Verif pas d'action sur les lignes disabled=1
 -> Statistiques
 -> htmlspecial sur les views
+-> Droit pour confirmer un compte
+-> CSS et JS plus propre
+-> Popup lorsqu'il y a une erreur lors d'une requete AJAX
+-> Popup warning fin de validation du token
 
 
 

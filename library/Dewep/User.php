@@ -174,7 +174,7 @@ class Dewep_User
 
 		self::$users[$id] = $result;
 
-		$result->rights = User::getRigths($id);
+		$result->rights = ($result->type == 'parent') ? (new stdClass()) : (User::getRigths($id));
 		$result->string = User::calcString($result->login, $result->firstname, $result->name);
 
 		self::$users[$id] = $result;

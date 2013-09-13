@@ -159,7 +159,7 @@
 				</table>
 				<nav class="ink-navigation"><ul class="pagination rounded shadowed grey content-center"></ul></nav>
 				<div class="ink-shade fade">
-					<div id="activite" class="ink-modal" data-trigger="undefined">
+					<div id="activite" class="ink-modal" data-trigger="undefined" data-width="200px">
 						<div class="modal-header">
 							<button class="modal-close ink-dismiss"></button>
 							<h5>Sortie Zoo</h5>
@@ -215,6 +215,7 @@
 					});*/
 					$('#table-activites tbody tr button.details').click(function(){
 						modal._init(false);
+						console.log(modal);
 						//alert("ID: " + $(this).parents('tr').eq(0).attr('data-id'));
 					});
 					$('#table-activites tbody tr button.ajouter').click(function(){
