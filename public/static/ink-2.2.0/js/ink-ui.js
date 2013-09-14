@@ -3666,10 +3666,12 @@ Ink.createModule('Ink.UI.Modal', '1', ['Ink.UI.Aux_1','Ink.Dom.Event_1','Ink.Dom
          */
         _reposition: function(){
 
-            this._modalDivStyle.top = this._modalDivStyle.left = '50%';
+            this._modalDivStyle.top = this._modalDivStyle.left = '0';
 
-            this._modalDivStyle.marginTop = '-' + ( ~~( Element.elementHeight(this._modalDiv)/2) ) + 'px';
-            this._modalDivStyle.marginLeft = '-' + ( ~~( Element.elementWidth(this._modalDiv)/2) ) + 'px';
+            var marginTop = ( ~~( ($(window).height() - Element.elementHeight(this._modalDiv))/2) );
+            var marginLeft = ( ~~( ($(window).width() - Element.elementWidth(this._modalDiv))/2) );
+            this._modalDivStyle.marginTop = (marginTop > 0 ? marginTop : 0) + 'px';
+            this._modalDivStyle.marginLeft = (marginLeft > 0 ? marginLeft : 0) + 'px';
         },
 
         /**

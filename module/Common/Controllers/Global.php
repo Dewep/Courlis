@@ -71,24 +71,32 @@ class Module_Common_Global extends Shape_Core
 			if (isset($this->view->alert) && $this->view->alert->type == 'error')
 			{
 				$this->view->error = $this->view->alert->title;
-				$this->view->message = $this->view->alert->content;
+				$this->view->details = $this->view->alert->content;
 			}
 			else if (isset($this->view->alert))
 			{
 				$this->view->success = $this->view->alert->title;
-				$this->view->message = $this->view->alert->content;
+				$this->view->details = $this->view->alert->content;
 			}
 			if (isset($this->view->error))
 			{
 				header('500 Internal Server Error', true, 500);
-				if (!isset($this->view->message))
+				if (!isset($this->view->details))
 				{
-					$this->view->message = $this->view->error;
+					$this->view->details = $this->view->error;
 					$this->view->error = 'Erreur';
 				}
 				foreach ($this->view as $key => $value) {
-					if (!in_array($key, array('error', 'message')))
+					if (!in_array($key, array('error', 'details')))
 						unset($this->view->$key);
+				}
+			}
+			if (isset($this->view->success))
+			{
+				if (!isset($this->view->details))
+				{
+					$this->view->details = $this->view->success;
+					$this->view->success = 'Succès';
 				}
 			}
 		}

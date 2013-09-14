@@ -24,9 +24,11 @@ OK -> Liste des utilisateurs
 OK -> Liste des administrateurs
 OK -> Pouvoir se logas sur un compte
 
--> Pouvoir éditer les infos générales d'un parent/admin
--> Pouvoir éditer les droits d'un admin
--> Pouvoir supprimer un parent/admin
+OK -> Pouvoir éditer les infos générales d'un parent/admin
+OK -> Pouvoir éditer les droits d'un admin
+OK -> Pouvoir supprimer un parent/admin
+
+-> Vérifier droit éditer/suppression/...
 
 -> Pouvoir créer un parent
 -> Pouvoir créer un admin

@@ -131,24 +131,6 @@ class Dewep_User
 			return $login;
 	}
 
-	public static function getRigths($id = 0)
-	{
-		$id = ($id) ? $id : User::getId();
-
-		$rights = MySQL::query("SELECT
-				`right`.`name`,
-				" . ((self::get($id)->type == 'root') ? "1" : "(CASE WHEN `user_right`.`id_user` IS NOT NULL THEN 1 ELSE 0 END)") . " AS 'value'
-			FROM `right`
-				LEFT JOIN `user_right` ON `right`.`id` = `user_right`.`id_right` AND `user_right`.`id_user` = '".MySQL::escape($id)."'
-			WHERE
-				`user_right`.`id_user` IS NOT NULL
-				OR '".MySQL::escape(self::get($id)->type)."' = 'root';");
-		$result = new stdClass();
-		foreach ($rights as $right)
-			$result->{$right->name} = ($right->value == '1') ? true : false;
-		return $result;
-	}
-
 	public static function get($id = 0)
 	{
 		$id = ($id) ? $id : User::getId();
@@ -174,7 +156,7 @@ class Dewep_User
 
 		self::$users[$id] = $result;
 
-		$result->rights = ($result->type == 'parent') ? (new stdClass()) : (User::getRigths($id));
+		$result->rights = Courlis_Right::get($id);
 		$result->string = User::calcString($result->login, $result->firstname, $result->name);
 
 		self::$users[$id] = $result;

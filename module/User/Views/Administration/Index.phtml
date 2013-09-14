@@ -25,6 +25,7 @@
 									<form method="post">
 										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
 										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
+										<input type="submit" name="logas" class="ink-button button-small blue" value="Logas">
 										<input type="submit" name="confirm" class="ink-button button-small green" value="Confirmer">
 									</form>
 								</td>
@@ -53,8 +54,8 @@
 										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
 										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
 										<input type="submit" name="logas" class="ink-button button-small blue" value="Logas">
-										<input type="button" name="edit_user" data-id="<?php echo $user->id; ?>" class="ink-button button-small blue" value="Éditer">
-										<input type="submit" name="delete_parent" class="ink-button button-small red" value="Supprimer">
+										<input type="button" name="edit_user" class="ink-button button-small blue" value="Éditer">
+										<input type="submit" name="delete_user" class="ink-button button-small red" value="Supprimer">
 									</form>
 								</td>
 							</tr>
@@ -81,8 +82,8 @@
 									<form method="post">
 										<input type="hidden" name="token" value="<?php echo Dewep_CSRF::get(); ?>">
 										<input type="hidden" name="user_id" value="<?php echo $user->id; ?>">
-										<input type="button" name="edit_user" data-id="<?php echo $user->id; ?>" class="ink-button button-small blue" value="Éditer">
-										<input type="submit" name="delete_admin" class="ink-button button-small red" value="Supprimer">
+										<input type="button" name="edit_user" class="ink-button button-small blue" value="Éditer">
+										<input type="submit" name="delete_user" class="ink-button button-small red" value="Supprimer">
 									</form>
 								</td>
 							</tr>
@@ -113,6 +114,13 @@
 			var table_admin = new Ink.UI.Table('#admin .ink-table', {
 				pagination: '#nav_admin'
 			});
+			$('#manage_users input[type=submit][name=delete_user]').click(function(event) {
+				if ($(this).attr('confirm_delte'))
+					return true;
+				$(this).attr('confirm_delte', 'true');
+				popup_info('Confirmer la suppression', 'Attention cette action est supprimera l\'utilisateur. Si vous êtes sûr, recliquer une nouvelle fois sur le bouton.');
+				return false;
+			});
 			$('#manage_users input[type=button][name=edit_user]').click(function(event) {
 				var id_user = $(this).parent().find('input[name=user_id]').val();
 				var token = $(this).parent().find('input[name=token]').val();
@@ -135,12 +143,44 @@
 						onclick: function(ink, params){
 							if ($('#manage_users .popup .content form'))
 							{
-								// Requete ajax pour enregistrer
+								var content = $('#manage_users .popup .content');
+								var checkbox = {};
+								content.find(':checkbox').each(function(index, el) {
+									checkbox[$(this).attr('name')] = ($(this).is(':checked')) ? true : false;
+								});
+								$.ajax({
+								url: baseUrl('User/Administration/setUser?format=json'),
+								type: 'POST',
+								dataType: 'json',
+								data: {
+									id: id_user,
+									token: token,
+									name: content.find('input[name=name]').val(),
+									firstname: content.find('input[name=firstname]').val(),
+									mail: content.find('input[name=mail]').val(),
+									rights: checkbox
+								},
+								success: function(json)
+								{
+									var content = $('#manage_users .popup .content');
+									$('#manage_users input[name=user_id][value=' + id_user + ']').each(function(index, el) {
+										var tr = $(this).parents('tr:first');
+										tr.find('td:nth(0)').text(content.find('input[name=name]').val());
+										tr.find('td:nth(1)').text(content.find('input[name=firstname]').val());
+									});
+									ink.dismiss();
+									popup_success(json.success, json.details);
+								},
+								error: function(json) {
+									json = json.responseJSON;
+									popup_error(json.error, json.details);
+								}
+							});
 							}
 							else
 								ink.dismiss();
 						},
-						'params': 'test'
+						'params': null
 					}],
 					[{name:'width', value:'500px'}]
 				);
@@ -151,7 +191,6 @@
 					data: {id: id_user, token: token},
 					success: function(json)
 					{
-						console.log(json);
 						var content = $('#manage_users .popup .content');
 						var template = '' +
 							'<form action="' + baseUrl('User/Administration/setUser?format=json') + '" method="post" class="ink-form">' +
@@ -169,6 +208,9 @@
 										'<div class="control large-70">' +
 											'<input type="text" name="mail" id="edit_user_mail">' +
 										'</div>' +
+										'<label class="large-30 content-right rights">Permissions :</label>' +
+										'<div class="control large-70 rights">' +
+										'</div>' +
 									'</div>' +
 								'</fieldset>' +
 							'</form>';
@@ -176,6 +218,23 @@
 						content.find('input[name=name]').val(json.name);
 						content.find('input[name=firstname]').val(json.firstname);
 						content.find('input[name=mail]').val(json.mail);
+						if (json.type == 'admin')
+						{
+							console.log(json);
+							for (var right in json.rights) {
+								content.find('div.rights').append('' +
+										'<input type="checkbox" name="' + right + '" value="true" id="right_' + right + '"' + (json.rights[right] ? ' checked' : '') + '>' +
+										' <label for="right_' + right + '">' + json.rights_definitions[right] + '</label>'
+									);
+							};
+						}
+						else
+							content.find('.rights').hide();
+						$('#manage_users .popup .ink-modal').data('ink')._onResize(true);
+					},
+					error: function(json) {
+						json = json.responseJSON;
+						popup_error(json.error, json.details);
 					}
 				});
 			});

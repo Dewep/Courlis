@@ -3,6 +3,16 @@
 
 class Courlis_User extends Dewep_User
 {
+	public static function disable($id = 0)
+	{
+		MySQL::exec("UPDATE `user`
+			SET `disabled` = 1,
+				`id_modifier` = '".MySQL::escape(self::$id_real)."',
+				`mtime` = NOW()
+			WHERE
+				`id` = '".MySQL::escape(($id ? $id : self::$id))."';");
+	}
+
 	public static function setConfirm($etat = 0, $id = 0)
 	{
 		MySQL::exec("UPDATE `user`
@@ -10,13 +20,13 @@ class Courlis_User extends Dewep_User
 				`id_modifier` = '".MySQL::escape(self::$id_real)."',
 				`mtime` = NOW()
 			WHERE
-				`id` = '".($id ? $id : self::$id)."'
+				`id` = '".MySQL::escape(($id ? $id : self::$id))."'
 				AND `type` = 'parent';");
 	}
 
 	public static function set($infos = array(), $id = 0)
 	{
-		$id = ($id) ? $id : self::$id;
+		$id = MySQL::escape(($id) ? $id : self::$id);
 		$infos['id_modifier'] = self::getRealId();
 		$infos['mtime'] = new MySQL_Expr('NOW()');
 		if (isset($infos['password']))
@@ -26,8 +36,8 @@ class Courlis_User extends Dewep_User
 
 	public static function canUseMail($mail, $id = 0)
 	{
-		$id = ($id) ? $id : self::$id;
-		$res = MySQL::query("SELECT COUNT(`id`) AS 'count' FROM `user` WHERE `id` != '$id' AND `mail` = '".MySQL::escape($mail)."';");
+		$id = MySQL::escape(($id) ? $id : self::$id);
+		$res = MySQL::query("SELECT COUNT(`id`) AS 'count' FROM `user` WHERE `id` != '$id' AND `mail` = '".MySQL::escape($mail)."' AND `disabled` = 0;");
 		if (!$res || (!($res = $res->fetch())))
 			return false;
 		return ($res->count ? false : true);

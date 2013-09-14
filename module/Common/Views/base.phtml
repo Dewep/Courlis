@@ -116,6 +116,25 @@
 			text-shadow: #AAA 0.1em 0.1em 0.2em;
 			text-align: center;
 		}
+		#popup_error h5 {
+			color: #ea1414;
+		}
+		#popup_success h5 {
+			color: #59ba1c;
+		}
+		#popup_error p, #popup_success p {
+			font-weight: bold;
+			margin: 8px 0;
+		}
+		.ink-modal .column-group.gutters > [class*="large-"]
+		{
+			margin-bottom: 0.5em;
+		}
+		.ink-form .control-group .control > input[type=checkbox], .ink-form .control-group .control > input[type=radio]
+		{
+			width: auto;
+			margin-top: 0.4em;
+		}
 	</style>
 
 	<script type="text/javascript">
@@ -144,6 +163,7 @@
 		var id_popup = 0;
 		$.fn.popup = function(title, content, buttons, data)
 		{
+			$(this).find('> *').remove();
 			id_popup++;
 			$(this).append('<div class="ink-shade fade ink-shade-real"></div><div class="ink-shade fade"><div id="popupink' + id_popup + '" class="ink-modal" data-trigger="undefined">' +
 				'<div class="modal-header"><button class="modal-close ink-dismiss"></button><h5></h5></div>' +
@@ -171,6 +191,56 @@
 			return ($(this));
 		};
 	})(jQuery);
+	$(function(){
+		popup_info = function popup_info(title, details)
+		{
+			$('#popup_info').popup(
+				title,
+				'<p>' + details + '</p>',
+				[{
+					pos: 'right',
+					className: 'grey',
+					content: 'Ok',
+					onclick: function(ink, params){
+						ink.dismiss();
+					}
+				}],
+				[{name:'width', value:'500px'}]
+			);
+		};
+		popup_error = function popup_error(title, details)
+		{
+			$('#popup_error').popup(
+				title,
+				'<p>' + details + '</p>',
+				[{
+					pos: 'right',
+					className: 'red',
+					content: 'Ok',
+					onclick: function(ink, params){
+						ink.dismiss();
+					}
+				}],
+				[{name:'width', value:'500px'}]
+			);
+		};
+		popup_success = function popup_success(title, details)
+		{
+			$('#popup_success').popup(
+				title,
+				'<p>' + details + '</p>',
+				[{
+					pos: 'right',
+					className: 'green',
+					content: 'Ok',
+					onclick: function(ink, params){
+						ink.dismiss();
+					}
+				}],
+				[{name:'width', value:'500px'}]
+			);
+		};
+	});
 	</script>
 </head>
 
@@ -217,6 +287,10 @@
 	</div>
 
 	<?php $this->render('footer'); ?>
+
+	<div id="popup_error"></div>
+	<div id="popup_success"></div>
+	<div id="popup_info"></div>
 
 </body>
 </html>
